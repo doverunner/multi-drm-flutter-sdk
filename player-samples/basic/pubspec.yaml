@@ -1,5 +1,5 @@
 name: basic
-description: Basic Player for pallycon drm sdk
+description: DOVERUNNER Multi DRM SDK basic sample
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -32,8 +32,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
-  pallycon_drm_sdk: ^1.1.4
-#    path: ../../pallycon-drm-sdk/pallycon_drm_sdk
+  dr_multi_drm_sdk:
+    path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
 
 dev_dependencies:
   flutter_test:

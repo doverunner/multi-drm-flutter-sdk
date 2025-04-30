@@ -1,18 +1,18 @@
 import 'package:advanced/core/error/exceptions.dart';
 import 'package:advanced/core/error/failures.dart';
 import 'package:advanced/core/network/network_info.dart';
-import 'package:advanced/features/advanced/data/datasources/pallycon_content_local_data_source.dart';
-import 'package:advanced/features/advanced/data/datasources/pallycon_content_remote_data_source.dart';
-import 'package:advanced/features/advanced/data/datasources/pallycon_content_user_data_source.dart';
+import 'package:advanced/features/advanced/data/datasources/dr_content_local_data_source.dart';
+import 'package:advanced/features/advanced/data/datasources/dr_content_remote_data_source.dart';
+import 'package:advanced/features/advanced/data/datasources/dr_content_user_data_source.dart';
 import 'package:advanced/features/advanced/data/models/drm_content_model.dart';
 import 'package:advanced/features/advanced/domain/repositories/movie_repository.dart';
 import 'dart:io' show Platform;
 import 'package:dartz/dartz.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
-  final PallyConContentRemoteDataSource remoteDataSource;
-  final PallyConContentLocalDataSource localDataSource;
-  final PallyConContentUserDataSource userDataSource;
+  final DrContentRemoteDataSource remoteDataSource;
+  final DrContentLocalDataSource localDataSource;
+  final DrContentUserDataSource userDataSource;
 
   MovieRepositoryImpl(
       {required this.remoteDataSource,

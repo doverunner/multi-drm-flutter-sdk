@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.pallycon.basic"
+    namespace "com.doverunner.basic"
     compileSdkVersion flutter.compileSdkVersion
 //    ndkVersion flutter.ndkVersion
     ndkVersion "26.1.10909125"
@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.pallycon.basic"
+        applicationId "com.doverunner.basic"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 21
@@ -67,15 +67,15 @@ flutter {
 }
 
 dependencies {
-    implementation "androidx.media3:media3-exoplayer:1.4.1"
-    implementation "androidx.media3:media3-ui:1.4.1"
-    implementation "androidx.media3:media3-exoplayer-dash:1.4.1"
-    implementation "androidx.media3:media3-exoplayer-hls:1.4.1"
-    implementation "androidx.media3:media3-exoplayer-rtsp:1.4.1"
-    implementation "androidx.media3:media3-exoplayer-smoothstreaming:1.4.1"
-    implementation "androidx.media3:media3-datasource-okhttp:1.4.1"
+    implementation "androidx.media3:media3-exoplayer:1.5.1"
+    implementation "androidx.media3:media3-ui:1.5.1"
+    implementation "androidx.media3:media3-exoplayer-dash:1.5.1"
+    implementation "androidx.media3:media3-exoplayer-hls:1.5.1"
+    implementation "androidx.media3:media3-exoplayer-rtsp:1.5.1"
+    implementation "androidx.media3:media3-exoplayer-smoothstreaming:1.5.1"
+    implementation "androidx.media3:media3-datasource-okhttp:1.5.1"
 
-    implementation 'com.pallycon:widevine:4.3.2'
+    implementation 'com.doverunner:widevine:4.4.0'
 
     implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'com.google.android.material:material:1.12.0'

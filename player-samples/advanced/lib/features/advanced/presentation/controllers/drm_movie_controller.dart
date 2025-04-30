@@ -9,7 +9,7 @@ import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'dart:io' show Platform;
 import 'package:path/path.dart' as p;
-import 'package:pallycon_drm_sdk/pallycon_drm_sdk.dart';
+import 'package:dr_multi_drm_sdk/dr_multi_drm_sdk.dart';
 
 class DrmMovieController extends SuperController<List<DrmMovie>> {
   DrmMovieController(this._getDrmContentUseCaseUseCase);
@@ -17,12 +17,12 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   final GetDrmContentUseCase _getDrmContentUseCaseUseCase;
 
   static const inkaLicenseUrl =
-      "https://license-global.pallycon.com/ri/licenseManager.do";
+      "https://drm-license.doverunner.com/ri/licenseManager.do";
   static const certUrl =
-      "https://license-global.pallycon.com/ri/fpsKeyManager.do";
+      "https://drm-license.doverunner.com/ri/fpsKeyManager.do";
   static const siteId = "DEMO";
 
-  var pallyConContentConfigs = RxList<PallyConContentConfiguration>([]);
+  var drContentConfigs = RxList<DrContentConfiguration>([]);
   var downloadPercent = <Tuple2<String, double>>[].obs;
   String checkExtension = ".mpd";
 
@@ -41,7 +41,7 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
 
   sdkInit() {
     try {
-      PallyConDrmSdk.initialize(siteId);
+      DrMultiDrmSdk.initialize(siteId);
     } on IllegalArgumentException catch (e) {
       print(e.message);
     } on PermissionRequiredException catch (e) {
@@ -52,37 +52,37 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   }
 
   setListener() {
-    PallyConDrmSdk.onPallyConEvent.listen((event) {
+    DrMultiDrmSdk.onDrEvent.listen((event) {
       var downloadState = DownloadStatus.pending;
       switch (event.eventType) {
-        case PallyConEventType.prepare:
+        case DrEventType.prepare:
           break;
-        case PallyConEventType.complete:
+        case DrEventType.complete:
           downloadState = DownloadStatus.success;
           break;
-        case PallyConEventType.pause:
+        case DrEventType.pause:
           downloadState = DownloadStatus.pause;
           break;
-        case PallyConEventType.remove:
+        case DrEventType.remove:
           break;
-        case PallyConEventType.stop:
+        case DrEventType.stop:
           break;
-        case PallyConEventType.download:
+        case DrEventType.download:
           downloadState = DownloadStatus.running;
           break;
-        case PallyConEventType.contentDataError:
+        case DrEventType.contentDataError:
           break;
-        case PallyConEventType.drmError:
-        case PallyConEventType.licenseServerError:
-        case PallyConEventType.downloadError:
-        case PallyConEventType.networkConnectedError:
-        case PallyConEventType.detectedDeviceTimeModifiedError:
-        case PallyConEventType.migrationError:
+        case DrEventType.drmError:
+        case DrEventType.licenseServerError:
+        case DrEventType.downloadError:
+        case DrEventType.networkConnectedError:
+        case DrEventType.detectedDeviceTimeModifiedError:
+        case DrEventType.migrationError:
           errorMessage.value = event.message;
           break;
-        case PallyConEventType.licenseCipherError:
+        case DrEventType.licenseCipherError:
           break;
-        case PallyConEventType.unknown:
+        case DrEventType.unknown:
           break;
       }
       if (state != null) {
@@ -98,7 +98,7 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
       }
     });
 
-    PallyConDrmSdk.onDownloadProgress.listen((event) {
+    DrMultiDrmSdk.onDownloadProgress.listen((event) {
       if (state != null) {
         var index = state!.indexWhere((p0) => p0.url == event.url);
         if (index >= 0 &&
@@ -137,9 +137,9 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
     change(filteredMovies, status: RxStatus.success());
 
     if (state != null) {
-      pallyConContentConfigs.clear();
+      drContentConfigs.clear();
       for (var i = 0; i < state!.length; i++) {
-        var config = PallyConContentConfiguration(
+        var config = DrContentConfiguration(
           state![i].contentId,
           state![i].url,
           token: state![i].token,
@@ -147,30 +147,30 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
           licenseCipherTablePath: state![i].licenseCipherPath,
           certificateUrl: state![i].licenseCertUrl ?? certUrl,
         );
-        pallyConContentConfigs.add(config);
+        drContentConfigs.add(config);
         downloadStateCheck(i);
       }
     }
   }
 
   releaseSdks() {
-    PallyConDrmSdk.release();
+    DrMultiDrmSdk.release();
   }
 
   downloadContent(DrmMovie drmMovie) {
-    final index = pallyConContentConfigs
+    final index = drContentConfigs
         .indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
     if (index >= 0) {
       if (state![index].downloadStatus == DownloadStatus.pause) {
-        PallyConDrmSdk.resumeDownloads();
+        DrMultiDrmSdk.resumeDownloads();
 
         // if (Platform.isIOS) {
-        //   PallyConDrmSdk.resumeDownloadTask(pallyConContentConfigs[index]);
+        //   DrMultiDrmSdk.resumeDownloadTask(pallyConContentConfigs[index]);
         // }
       } else {
         try {
-          PallyConDrmSdk.addStartDownload(pallyConContentConfigs[index]);
+          DrMultiDrmSdk.addStartDownload(drContentConfigs[index]);
         } on IllegalArgumentException catch (e) {
           print(e.message);
         }
@@ -197,18 +197,18 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   }
 
   pauseContent(DrmMovie drmMovie) {
-    final index = pallyConContentConfigs
+    final index = drContentConfigs
         .indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
-    PallyConDrmSdk.stopDownload(pallyConContentConfigs[index]);
+    DrMultiDrmSdk.stopDownload(drContentConfigs[index]);
   }
 
   removeContent(DrmMovie drmMovie) {
-    final index = pallyConContentConfigs
+    final index = drContentConfigs
         .indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
     try {
-      PallyConDrmSdk.removeDownload(pallyConContentConfigs[index]);
+      DrMultiDrmSdk.removeDownload(drContentConfigs[index]);
       downloadStateCheck(index);
     } on IllegalArgumentException catch (e) {
       print(e.message);
@@ -216,11 +216,11 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   }
 
   removeLicense(DrmMovie drmMovie) {
-    final index = pallyConContentConfigs
+    final index = drContentConfigs
         .indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
     try {
-      PallyConDrmSdk.removeLicense(pallyConContentConfigs[index]);
+      DrMultiDrmSdk.removeLicense(drContentConfigs[index]);
     } on IllegalArgumentException catch (e) {
       print(e.message);
     }
@@ -243,25 +243,25 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
     if (state == null) return;
 
     try {
-      var needsMigration = await PallyConDrmSdk.needsMigrateDatabase(
-          pallyConContentConfigs[index]);
+      var needsMigration = await DrMultiDrmSdk.needsMigrateDatabase(
+          drContentConfigs[index]);
       if (needsMigration) {
-        await PallyConDrmSdk.migrateDatabase(pallyConContentConfigs[index]);
+        await DrMultiDrmSdk.migrateDatabase(drContentConfigs[index]);
       }
 
-      PallyConDownloadState downloadState =
-          await PallyConDrmSdk.getDownloadState(pallyConContentConfigs[index]);
+      DrDownloadState downloadState =
+          await DrMultiDrmSdk.getDownloadState(drContentConfigs[index]);
 
       switch (downloadState) {
-        case PallyConDownloadState.DOWNLOADING:
+        case DrDownloadState.DOWNLOADING:
           state![index] =
               state![index].copyWith(downloadStatus: DownloadStatus.running);
           break;
-        case PallyConDownloadState.PAUSED:
+        case DrDownloadState.PAUSED:
           state![index] =
               state![index].copyWith(downloadStatus: DownloadStatus.pause);
           break;
-        case PallyConDownloadState.COMPLETED:
+        case DrDownloadState.COMPLETED:
           state![index] =
               state![index].copyWith(downloadStatus: DownloadStatus.success);
           break;
@@ -277,8 +277,8 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   }
 
   Future<String> getObjectForContent(int index) async {
-    final config = pallyConContentConfigs[index];
-    var contentData = await PallyConDrmSdk.getObjectForContent(config);
+    final config = drContentConfigs[index];
+    var contentData = await DrMultiDrmSdk.getObjectForContent(config);
 
     if (contentData.isEmpty) {
       contentData = '{"drmConfig":{'
@@ -316,14 +316,14 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
     return contentData;
   }
 
-  PallyConContentConfiguration getContentConfig(DrmMovie drmMovie) {
-    final index = pallyConContentConfigs
+  DrContentConfiguration getContentConfig(DrmMovie drmMovie) {
+    final index = drContentConfigs
         .indexWhere((p0) => p0.contentUrl == drmMovie.url);
-    return pallyConContentConfigs[index];
+    return drContentConfigs[index];
   }
 
   int getIndex(DrmMovie drmMovie) {
-    return pallyConContentConfigs
+    return drContentConfigs
         .indexWhere((p0) => p0.contentUrl == drmMovie.url);
   }
 

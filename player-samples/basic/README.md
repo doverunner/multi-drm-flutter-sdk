@@ -1,6 +1,6 @@
 # basic
 
-Basic Player for pallycon drm sdk
+Basic Player for doverunner drm sdk
 
 ## packages
 ```
@@ -29,19 +29,19 @@ basic
 > For help getting started with Flutter development, view the [online documentation][3], which offers tutorials, samples, guidance on mobile development, and a full API reference.
 
 ### Add package to `pubspec.yaml`
-- Add PallyCon Drm SDK package
-- Add BetterPlayer for PallyConDRM package
+- Add DOVERUNNER Multi Drm SDK package
+- Add BetterPlayer for DOVERUNNER DRM package
 
     ```yaml
         # pubspec.yaml
 
-        # Add PallyCon Drm SDK package
-        pallycon_drm_sdk: ^1.2.0
+        # Add DOVERUNNER Drm SDK package
+        dr_multi_drm_sdk: ^1.2.0
         
-        # Add BetterPlayer for PallyConDRM package
+        # Add BetterPlayer for DOVERUNNER DRM package
         better_player:
         git:
-          url: https://github.com/inka-pallycon/betterplayer.git
+          url: https://github.com/doverunner/betterplayer
           ref: master
     ```
 ### Install package and run

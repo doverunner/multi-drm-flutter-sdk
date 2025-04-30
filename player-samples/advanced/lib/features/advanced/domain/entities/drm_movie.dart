@@ -57,7 +57,7 @@ class DrmMovie extends Equatable {
         audioCodec,
         audioLanguage,
         licenseServerUrl ??
-            "https://license-global.pallycon.com/ri/licenseManager.do/",
+            "https://drm-license.doverunner.com/ri/licenseManager.do/",
         licenseCipherPath ?? "",
         licenseCertUrl ?? "",
         token ?? "",

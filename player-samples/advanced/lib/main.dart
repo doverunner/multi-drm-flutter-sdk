@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'PallyCon Drm Sdk',
+      title: 'DOVERUNNER DRM SDK',
       home: const DrmContentPage(),
       initialBinding: DrmMovieBinding(),
       getPages: AppPages.pages,

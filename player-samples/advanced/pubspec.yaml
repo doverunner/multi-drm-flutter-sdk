@@ -1,5 +1,5 @@
 name: advanced
-description: PallyCon DRM SDK advanced sample
+description: DOVERUNNER Multi DRM SDK advanced sample
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -34,16 +34,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
 
-  #PallyCon Drm SDK
-  #  pallycon_drm_sdk:
-  #    path: ../../pallycon-drm-sdk/pallycon_drm_sdk
-  pallycon_drm_sdk: ^1.1.4
+  #doverunner Drm SDK
+  dr_multi_drm_sdk:
+    path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
 
-  #BetterPlayer for PallyConDRM
+  #BetterPlayer for DOVERUNNER DRM
   better_player:
-    path: ../../../pallycon-multidrm-flutter-sample/
+    path: ../../../multi-drm-flutter-sample/
   #  drm_video:
-  #    path: ../../pallycon-drm_video
+  #    path: ../../doverunner-drm_video
   #  drm_video: ^0.0.1
 
   # path

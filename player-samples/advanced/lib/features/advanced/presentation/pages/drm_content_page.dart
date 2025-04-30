@@ -9,7 +9,7 @@ import 'views/movie_cell.dart';
 class DrmContentPage extends GetView<DrmMovieController> {
   const DrmContentPage({super.key});
 
-  static const platform = MethodChannel('com.pallycon/startActivity');
+  static const platform = MethodChannel('com.doverunner/startActivity');
 
   @override
   Widget build(BuildContext context) {

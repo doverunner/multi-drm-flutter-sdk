@@ -1,17 +1,17 @@
-# DoveRunner Multi-DRM Flutter SDK
+# DOVERUNNER Multi-DRM Flutter SDK
 
-`DoveRunner Multi-DRM Flutter SDK` (`Flutter SDK` for short) is a product that makes it easy to apply Widevine and FairPlay DRM when developing media service apps in a Flutter-based cross-platform application development environment. 
+`DOVERUNNER Multi-DRM Flutter SDK` (`Flutter SDK` for short) is a product that makes it easy to apply Widevine and FairPlay DRM when developing media service apps in a Flutter-based cross-platform application development environment. 
 It supports streaming and downloading scenarios of content encrypted with Widevine and FairPlay DRM on Android and iOS apps developed with Flutter.
 
 ## Packages
 ```
 DoveRunner DRM Flutter SDK
     |
-    ├─ pallycon-drm-sdk     // DoveRunner DRM Flutter SDK
-    |    ├─ pallycon_drm_sdk
-    |    ├─ pallycon_drm_sdk_android
-    |    ├─ pallycon_drm_sdk_interface
-    |    └─ pallycon_drm_sdk_ios
+    ├─ dr-multi-drm-sdk     // DOVERUNNER DRM Flutter SDK
+    |    ├─ dr_multi_drm_sdk
+    |    ├─ dr_multi_drm_sdk_android
+    |    ├─ dr_multi_drm_sdk_interface
+    |    └─ dr_multi_drm_sdk_ios
     |
     └─ player-samples       // sample project
          ├─ advanced
@@ -19,15 +19,15 @@ DoveRunner DRM Flutter SDK
 ``` 
 
 
-### pallycon-drm-sdk
-- `pallycon-drm-sdk` is a SDK that provides an interface to use DoveRunner services in flutter.
-  - Provides download and streaming playback functions on Android through `PallyCon Widevine Android SDK`.
-  - Provides download and streaming playback functions on iOS through `PallyCon FPS iOS SDK`.
-- For more details about `pallycon-drm-sdk`, please refer to the [README.md][1] file.
+### dr-multi-drm-sdk
+- `dr-multi-drm-sdk` is a SDK that provides an interface to use DOVERUNNER services in flutter.
+  - Provides download and streaming playback functions on Android through `DOVERUNNER Widevine Android SDK`.
+  - Provides download and streaming playback functions on iOS through `DOVERUNNER FPS iOS SDK`.
+- For more details about `dr-multi-drm-sdk`, please refer to the [README.md][1] file.
 
 
 ### player-samples
-- `player-samples` is a sample project that allows you to learn how to use `pallycon_drm_sdk`.
+- `player-samples` is a sample project that allows you to learn how to use `dr_multi_drm_sdk`.
   - advanced
     - Provides download and streaming playback functions
   - basic
@@ -36,5 +36,5 @@ DoveRunner DRM Flutter SDK
 - For more details about `player-samples`, please refer to the [README.md][2] file in the advanced and basic folders.
 
 
-[1]: ./pallycon-drm-sdk/README.md
+[1]: dr-multi-drm-sdk/README.md
 [2]: ./player-samples/advanced/README.md
