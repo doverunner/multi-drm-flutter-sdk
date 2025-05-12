@@ -30,7 +30,7 @@ class DrmContentPage extends GetView<DrmMovieController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: ThemeColor.white,
-          title: const Text('PallyCon DRM SDK Sample',
+          title: const Text('Multi-DRM SDK Sample',
               style: TextStyle(color: Colors.orange, fontFamily: 'Poppins')),
           elevation: 0,
         ),

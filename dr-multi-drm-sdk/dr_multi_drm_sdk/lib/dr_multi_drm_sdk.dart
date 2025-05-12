@@ -7,7 +7,6 @@ export 'package:dr_multi_drm_sdk_android/dr_multi_drm_sdk_android.dart';
 export 'package:dr_multi_drm_sdk_ios/dr_multi_drm_sdk_ios.dart';
 export 'package:dr_multi_drm_sdk_interface/dr_multi_drm_sdk_interface.dart';
 
-
 /// DOVERUNNER Multi DRM SDK for using Multi-DRM.
 class DrMultiDrmSdk {
   /// Notifications of events occurring in the SDK.
@@ -35,7 +34,8 @@ class DrMultiDrmSdk {
   ///
   /// Throws a [IllegalArgumentException] when the input parameters are null or incorrect
   /// Throws a [PermissionRequiredException] when there is no permission in the android project
-  static Future<String> getObjectForContent(DrContentConfiguration config) async {
+  static Future<String> getObjectForContent(
+      DrContentConfiguration config) async {
     return await DrMultiDrmSdkPlatform.instance.getObjectForContent(config);
   }
 
@@ -44,7 +44,8 @@ class DrMultiDrmSdk {
   /// A [DrDownloadState] is state of download for content
   ///
   /// Throws a [IllegalArgumentException] when the input parameters are null or incorrect
-  static Future<DrDownloadState> getDownloadState(DrContentConfiguration config) async =>
+  static Future<DrDownloadState> getDownloadState(
+          DrContentConfiguration config) async =>
       await DrMultiDrmSdkPlatform.instance.getDownloadState(config);
 
   /// Starts the service if not started already and adds a new download.
@@ -92,7 +93,8 @@ class DrMultiDrmSdk {
   /// As each patch progresses, you can check to see if you need to migrate.
   ///
   /// Throws a [IllegalArgumentException] when the input parameters are null or incorrect
-  static Future<bool> needsMigrateDatabase(DrContentConfiguration config) async {
+  static Future<bool> needsMigrateDatabase(
+      DrContentConfiguration config) async {
     return await DrMultiDrmSdkPlatform.instance.needsMigrateDatabase(config);
   }
 
@@ -110,7 +112,8 @@ class DrMultiDrmSdk {
   ///  You must be connected to the network when using the function.
   ///
   /// Throws a [IllegalArgumentException] when the input parameters are null or incorrect
-  static Future<bool> reDownloadCertification(DrContentConfiguration config) async {
+  static Future<bool> reDownloadCertification(
+      DrContentConfiguration config) async {
     return await DrMultiDrmSdkPlatform.instance.reDownloadCertification(config);
   }
 

@@ -40,7 +40,12 @@ dependencies:
 
   #BetterPlayer for DOVERUNNER DRM
   better_player:
-    path: ../../../multi-drm-flutter-sample/
+    git:
+      url: https://github.com/doverunner/betterplayer.git
+      ref: dev
+
+  # better_player:
+  #   path: ../../../multi-drm-flutter-sample/
   #  drm_video:
   #    path: ../../doverunner-drm_video
   #  drm_video: ^0.0.1

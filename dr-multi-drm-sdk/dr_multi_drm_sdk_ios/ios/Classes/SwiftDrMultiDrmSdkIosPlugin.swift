@@ -25,24 +25,6 @@ public class SwiftDrMultiDrmSdkIosPlugin: NSObject, FlutterPlugin {
     }
 
     public static func register(with registrar: FlutterPluginRegistrar) {
-        //     let channel = FlutterMethodChannel(name: "com.pallycon.drmsdk/ios", binaryMessenger: registrar.messenger())
-        //     let drmMessageEventChannel = FlutterEventChannel(name: "com.pallycon.drmsdk/drm_message_ios", binaryMessenger: registrar.messenger())
-        //     let downloadChangeEventChannel = FlutterEventChannel(name: "com.pallycon.drmsdk/download_change_ios", binaryMessenger: registrar.messenger())
-        //
-        //     let instance = SwiftPallyconDrmSdkIosPlugin()
-        //     instance.channel = channel
-        //     registrar.addMethodCallDelegate(instance, channel: channel)
-        //     drmMessageEventSink.setStreamHandler(instance)
-        //     downloadChangeEventSink.setStreamHandler(instance)
-        //      methodCallHandler = MethodCallHandler()
-
-        //      methodCallHandler?.startListening(applicationContext, binding.binaryMessenger)
-
-        //      drEventHandier = PallyConEventHandler()
-        //      drEventHandier?.startListening(applicationContext, binding.binaryMessenger)
-
-        //      downloadContentHandler = DownloadContentHandler()
-        //      downloadContentHandler?.startListening(applicationContext, binding.binaryMessenger)
         let messenger: FlutterBinaryMessenger = registrar.messenger()
         let instance = SwiftDrMultiDrmSdkIosPlugin.init(messenger, registrar)
     }

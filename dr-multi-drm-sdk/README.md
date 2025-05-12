@@ -1,7 +1,7 @@
 # DOVERUNNER Multi DRM SDK for flutter
 
 **`DOVERUNNER Multi DRM SDK for flutter`** follows a federated architecture, which includes the following packages.
-> In the trial account, you can freely test SDK products within the trial limit on the number of licenses issued. However, in order to apply the SDK to commercial services, you must apply for a plan that includes SDK usage rights when subscribing to PallyCon commercial plans.
+> In the trial account, you can freely test SDK products within the trial limit on the number of licenses issued. However, in order to apply the SDK to commercial services, you must apply for a plan that includes SDK usage rights when subscribing to DOVERUNNER commercial plans.
 
 This document describes the usage and API of **`dr_multi_drm_sdk`**.
 The example of **`dr_multi_drm_sdk`** is available on [player-sample][9].

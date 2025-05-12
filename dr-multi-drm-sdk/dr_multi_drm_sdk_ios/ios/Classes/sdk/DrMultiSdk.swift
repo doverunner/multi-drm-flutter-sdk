@@ -1,6 +1,6 @@
 import Foundation
 import AVKit
-import PallyConFPSSDK
+import DOVERUNNERFairPlay
 
 struct DrmContent {
     let siteId: String
@@ -45,7 +45,7 @@ struct DrmContent {
         self.downloadPath = path
     }
 
-    func toPallyConConfig() -> String {
+    func toDrmConfig() -> String {
 
         let customData = self.customData ?? ""
         let drmLicenseUrl = self.drmLicenseUrl ?? ""
@@ -58,26 +58,26 @@ struct DrmContent {
 class DrMultiSdk: NSObject {
     static let shared = DrMultiSdk()
 
-    private var pallyConEvent: FlutterEventSink?
+    private var drmEvent: FlutterEventSink?
     private var progressEvent: FlutterEventSink?
 
     private var siteId: String = ""
-    private var fpsSdk: PallyConFPSSDK?
+    private var fpsSdk: DOVERUNNERFairPlay?
     private var downloadTaskMap = [DownloadTask:DrmContent]()
     private var downloadedContentMap = [String:DrmContent]()
 
     static let baseDownloadURL: URL = URL(fileURLWithPath: NSHomeDirectory())
 
-    public func setPallyConEventSink(eventSink: FlutterEventSink?) {
-        self.pallyConEvent = eventSink
+    public func setMultiDrmEventSink(eventSink: FlutterEventSink?) {
+        self.drmEvent = eventSink
     }
 
     public func setDownloadProgress(eventSink: FlutterEventSink?) {
         self.progressEvent = eventSink
     }
 
-    public func sendPallyConEvent(url: String, eventType: DrEventType, message: String, errorCode: String = "") {
-        guard let event = pallyConEvent else {
+    public func sendMultiDrmEvent(url: String, eventType: DrEventType, message: String, errorCode: String = "") {
+        guard let event = drmEvent else {
             return
         }
 
@@ -96,7 +96,7 @@ class DrMultiSdk: NSObject {
 
     public func initialize(siteId: String) {
         self.siteId = siteId
-        fpsSdk = PallyConFPSSDK()
+        fpsSdk = DOVERUNNERFairPlay()
     }
 
     public func release()  {
@@ -115,7 +115,7 @@ class DrMultiSdk: NSObject {
             drmContent.customData = customData
             drmContent.appleCertUrl = appleCertUrl ?? ""
             downloadedContentMap[url] = drmContent
-            return drmContent.toPallyConConfig()
+            return drmContent.toDrmConfig()
         } else {
             // Streaming
             let strToken = token ?? ""
@@ -136,7 +136,7 @@ class DrMultiSdk: NSObject {
     }
 
     public func addStartDownload(url: String, contentId: String, token: String?, customData: String?, httpHeaders: Dictionary<String, String>?, cookie: String?, drmLicenseUrl: String?, appleCertUrl: String?) {
-//        sendPallyConEvent(url: url, eventType: DrEventType.complete, message: "Complete")
+//        sendMultiDrmEvent(url: url, eventType: DrEventType.complete, message: "Complete")
         for (task, downloadContent) in downloadTaskMap {
             print("download task \(downloadContent.contentId)")
             if downloadContent.url == url {
@@ -147,19 +147,19 @@ class DrMultiSdk: NSObject {
         }
 
         guard let contentUrl:URL = URL(string: url) else {
-            sendPallyConEvent(url: url, eventType: DrEventType.downloadError, message: "String to URL convert Error!", errorCode: "")
+            sendMultiDrmEvent(url: url, eventType: DrEventType.downloadError, message: "String to URL convert Error!", errorCode: "")
             return
         }
 
         let urlAsset = AVURLAsset(url: contentUrl)
-        print("https://license-global.pallycon.com/ri/fpsKeyManager.do?siteId=\(siteId)")
-        let drm_content = PallyConDrmConfiguration(avURLAsset: urlAsset,
-                                                   contentId: contentId,
-                                                   certificateUrl: "https://license-global.pallycon.com/ri/fpsKeyManager.do?siteId=\(siteId)",
-                                                   authData: token,
-                                                   delegate: self)
-        guard let downloadTask = fpsSdk?.createDownloadTask(Content: drm_content, delegate: self) else {
-            self.sendPallyConEvent(url: url, eventType: DrEventType.downloadError, message: "DownloadTask not Create! ", errorCode: "")
+        print("https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=\(siteId)")
+        let drm_content = FairPlayConfiguration(avURLAsset: urlAsset, 
+                                                contentId: contentId,
+                                                certificateUrl: "https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=\(siteId)",
+                                                authData: token,
+                                                delegate: self)
+        guard let downloadTask = fpsSdk?.createDownloadTask(drm: drm_content, delegate: self) else {
+            self.sendMultiDrmEvent(url: url, eventType: DrEventType.downloadError, message: "DownloadTask not Create! ", errorCode: "")
             return
         }
 
@@ -190,7 +190,7 @@ class DrMultiSdk: NSObject {
             if downloadTaskMap[task]?.downloadState == DownloadState.downloading {
                 task.cancel()
                 downloadTaskMap[task]?.downloadState = DownloadState.pause
-                self.sendPallyConEvent(url: downloadTaskMap[task]!.url,
+                self.sendMultiDrmEvent(url: downloadTaskMap[task]!.url,
                                        eventType: DrEventType.pause,
                                        message: "User Downloaded Content Pause")
             } else {
@@ -226,7 +226,7 @@ class DrMultiSdk: NSObject {
         }
         self.deleteDowndloadedContent(for: downloadedContent)
         downloadedContentMap.removeValue(forKey: url)
-        self.sendPallyConEvent(url: url, eventType: DrEventType.remove, message: "Remove Downloaded Content")
+        self.sendMultiDrmEvent(url: url, eventType: DrEventType.remove, message: "Remove Downloaded Content")
     }
 
     public func removeLicense(url: String) {
@@ -238,7 +238,7 @@ class DrMultiSdk: NSObject {
 }
 
 
-extension DrMultiSdk: PallyConFPSDownloadDelegate {
+extension DrMultiSdk: FairPlayDownloadDelegate {
     func downloadContent(_ contentId: String, didStartDownloadWithAsset asset: AVURLAsset, subtitleDisplayName: String) {
         print("downloadContent : didStartDownloadWithAsset\(contentId) : \(subtitleDisplayName)")
         guard let downloadEvent = self.progressEvent else {
@@ -265,31 +265,6 @@ extension DrMultiSdk: PallyConFPSDownloadDelegate {
 
     func downloadContent(_ contentId: String, didStopWithError error: Error?) {
         print("downloadContent : didStopWithError \(contentId)")
-        var localPath: String?
-        var stopError: Error?
-        // send flutter Error
-        
-        if let error = error as? PallyConSDKException {
-            switch error {
-            case .DownloadUserCancel(let filePath):
-                print("User Cancel Error \(filePath)")
-                localPath = filePath
-                stopError = error
-                break
-            case .DownloadUnknownError(let filePath):
-                localPath = filePath
-                stopError = error
-                break
-            case .DownloadDefaultError(let networkError, let filePath):
-                print("didStopWithError error = \(networkError) \(filePath)")
-                let alert = UIAlertController(title: "Download Failed", message: "If you want to download, please try again", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
-                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-            default:
-                print("Error: \(error). Unkown.")
-                break
-            }
-        }
 
         var contentUrl:String = ""
         for (task, downloadContent) in downloadTaskMap {
@@ -299,9 +274,9 @@ extension DrMultiSdk: PallyConFPSDownloadDelegate {
                 break
             }
         }
-        // PallyCon SDK Error
+        // SDK Error
         var message = ""
-        if let error = error as? PallyConError {
+        if let error = error as? SDKError {
             switch error {
             case .database(comment: let comment):
                 message = comment
@@ -322,13 +297,13 @@ extension DrMultiSdk: PallyConFPSDownloadDelegate {
                 break
             }
 
-            self.sendPallyConEvent(url: contentUrl, eventType: DrEventType.unknownError,
-                                   message: "download stop : \(String(describing: localPath)) \n\(message)",
+            self.sendMultiDrmEvent(url: contentUrl, eventType: DrEventType.unknownError,
+                                   message: "download stop : \(message)",
                                    errorCode: "")
         } else {
             // 정상적으로 다운로드가 멈출 때
-            self.sendPallyConEvent(url: contentUrl, eventType: DrEventType.pause,
-                                   message: "user download stop : \(String(describing: localPath))",
+            self.sendMultiDrmEvent(url: contentUrl, eventType: DrEventType.pause,
+                                   message: "user download stop",
                                    errorCode: "")
         }
 
@@ -347,7 +322,7 @@ extension DrMultiSdk: PallyConFPSDownloadDelegate {
             }
         }
 
-        self.sendPallyConEvent(url: contentUrl, eventType: DrEventType.complete, message: "\(location.absoluteString)", errorCode: "")
+        self.sendMultiDrmEvent(url: contentUrl, eventType: DrEventType.complete, message: "\(location.absoluteString)", errorCode: "")
 
         return
     }
@@ -385,13 +360,12 @@ extension DrMultiSdk: PallyConFPSDownloadDelegate {
 }
 
 
-extension DrMultiSdk: PallyConFPSLicenseDelegate {
+extension DrMultiSdk: FairPlayLicenseDelegate {
 
-    func license(result: PallyConResult) {
+    func license(result: LicenseResult) {
         print("---------------------------- License Result ")
         print("Content ID : \(result.contentId)")
         print("Key ID     : \(String(describing: result.keyId))")
-        //print("Expiry Date: \(String(describing: result.offlineExpiry))")
         var message: String = ""
         if result.isSuccess == false {
              print("Error : \(String(describing: result.error?.localizedDescription))")
@@ -425,7 +399,7 @@ extension DrMultiSdk: PallyConFPSLicenseDelegate {
                   }
              }
         }
-        self.sendPallyConEvent(url: result.contentId,
+        self.sendMultiDrmEvent(url: result.contentId,
                                eventType: DrEventType.drmError,
                                message: message, errorCode: "")
     }

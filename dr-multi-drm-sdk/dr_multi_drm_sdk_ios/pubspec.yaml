@@ -1,8 +1,8 @@
 name: dr_multi_drm_sdk_ios
-description: PallyCon DRM Flutter SDK. This plugin provides the iOS implementation for a PallyCon DRM SDK.
+description: DOVERUNNER Multi-DRM Flutter SDK. This plugin provides the iOS implementation for a DOVERUNNERFairPlay SDK.
 version: 1.2.0
-homepage: https://pallycon.com/
-repository: https://github.com/inka-pallycon/pallycon-drm-sdk-flutter/tree/main/pallycon-drm-sdk/pallycon_drm_sdk_android
+homepage: https://doverunner.com/
+repository: https://github.com/doverunner/multi-drm-flutter-sdk/tree/main/pallycon-drm-sdk/pallycon_drm_sdk_android
 
 environment:
   sdk: ">=2.17.5 <4.0.0"

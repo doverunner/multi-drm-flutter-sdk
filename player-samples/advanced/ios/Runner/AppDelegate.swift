@@ -2,12 +2,12 @@ import Foundation
 import UIKit
 import AVKit
 import Flutter
-import PallyConFPSSDK
+import DOVERUNNERFairPlay
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
     
-    var pallyconSdk: PallyConFPSSDK?
+    var doverunnerSdk: DOVERUNNERFairPlay?
     
     override func application(
         _ application: UIApplication,
@@ -16,10 +16,10 @@ import PallyConFPSSDK
         GeneratedPluginRegistrant.register(with: self)
         
         let controller: FlutterViewController = window?.rootViewController as! FlutterViewController
-        let pallyconChannel = FlutterMethodChannel(name: "com.pallycon/startActivity",
+        let flutterChannel = FlutterMethodChannel(name: "com.doverunner/startActivity",
                                                    binaryMessenger: controller.binaryMessenger)
         
-        pallyconChannel.setMethodCallHandler({
+        flutterChannel.setMethodCallHandler({
             [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
             guard call.method == "StartSecondActivity" else {
                 result(FlutterMethodNotImplemented)
@@ -48,8 +48,8 @@ import PallyConFPSSDK
         let token = drmJson["token"] as? String ?? ""
         let userId = drmJson["userId"] as? String ?? "utest"
 
-        // 1. PallyCon FPS SDK initialize
-        pallyconSdk = PallyConFPSSDK()
+        // 1. FairPlay SDK initialize
+        doverunnerSdk = DOVERUNNERFairPlay()
         guard let contentUrl = URL(string: url) else {
             return
         }
@@ -57,11 +57,11 @@ import PallyConFPSSDK
         let urlAsset = AVURLAsset(url: contentUrl)
         
         // 2. Acquire a Token information
-        let drm_content = PallyConDrmConfiguration(avURLAsset: urlAsset, 
-                                                   contentId: contentId,
-                                                   certificateUrl: "https://license-global.pallycon.com/ri/fpsKeyManager.do?siteId=\(siteId)",
-                                                   authData: token)
-        pallyconSdk?.prepare(Content: drm_content)
+        let drm_config = FairPlayConfiguration(avURLAsset: urlAsset,
+                                                contentId: contentId,
+                                                certificateUrl: "https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=\(siteId)",
+                                                authData: token, delegate: self)
+        doverunnerSdk?.prepare(drm: drm_config)
         
         let playerItem = AVPlayerItem(asset: urlAsset)
         let avPlayer = AVPlayer(playerItem: playerItem)
@@ -73,12 +73,53 @@ import PallyConFPSSDK
     }
 }
 
-extension AppDelegate: PallyConFPSLicenseDelegate {
-    func fpsLicenseDidSuccessAcquiring(contentId: String) {
-        print("License Success : \(contentId)")
-    }
-    
-    func fpsLicense(contentId: String, didFailWithError error: Error) {
-        print("License Fail Error : \(contentId)")
+extension AppDelegate: FairPlayLicenseDelegate {
+    func license(result: LicenseResult) {
+         print("---------------------------- License Result ")
+         print("Content ID : \(result.contentId)")
+         print("Key ID     : \(String(describing: result.keyId))")
+
+         var message: String?
+         if result.isSuccess == false {
+              print("Error : \(String(describing: result.error?.localizedDescription))")
+              if let error = result.error {
+                   switch error {
+                   case .database(comment: let comment):
+                        print(comment)
+                        message = comment
+                   case .server(errorCode: let errorCode, comment: let comment):
+                        print("code : \(errorCode), comment: \(comment)")
+                        message = "code : \(errorCode), comment: \(comment)"
+                   case .network(errorCode: let errorCode, comment: let comment):
+                        print("code : \(errorCode), comment: \(comment)")
+                        message = "code : \(errorCode), comment: \(comment)"
+                   case .system(errorCode: let errorCode, comment: let comment):
+                        print("code : \(errorCode), comment: \(comment)")
+                        message = "code : \(errorCode), comment: \(comment)"
+                   case .failed(errorCode: let errorCode, comment: let comment):
+                        print("code : \(errorCode), comment: \(comment)")
+                        message = "code : \(errorCode), comment: \(comment)"
+                   case .unknown(errorCode: let errorCode, comment: let comment):
+                        print("code : \(errorCode), comment: \(comment)")
+                        message = "code : \(errorCode), comment: \(comment)"
+                   case .invalid(comment: let comment):
+                        print("comment: \(comment)")
+                        message = "comment: \(comment)"
+                   default:
+                        print("comment: \(error)")
+                        message = "comment: \(error)"
+                       break
+                   }
+              }
+//              DispatchQueue.main.async {
+//                   if let topVC = UIApplication.topViewController() {
+//                        let alert = UIAlertController(title: "License Failed", message: message, preferredStyle: .alert)
+//                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { Void in
+//                             topVC.dismiss(animated: true, completion: nil)
+//                        }))
+//                        topVC.present(alert, animated: true, completion: nil)
+//                   }
+//              }
+         }
     }
 }
