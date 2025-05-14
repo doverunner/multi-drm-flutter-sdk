@@ -39,17 +39,16 @@ dependencies:
     path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
 
   #BetterPlayer for DOVERUNNER DRM
-  better_player:
-    path: ../../../multi-drm-flutter-sample/
-  #  drm_video:
-  #    path: ../../doverunner-drm_video
-  #  drm_video: ^0.0.1
+  better_player_plus:
+    git:
+      url: https://github.com/doverunner/better_player_plus_for_doverunner.git
+      ref: v1.0.8
 
   # path
-  path: ^1.8.2
+  path: ^1.9.1
 
   # GetX state management
-  get: ^4.6.5
+  get: ^4.7.2
   # Value equality
   equatable: ^2.0.3
   # Local cache
@@ -63,15 +62,15 @@ dependencies:
 
   dartz: ^0.10.1
 
-  dio: ^4.0.6
+  dio: ^5.8.0+1
 
-  connectivity_plus: ^6.1.0
+  connectivity_plus: ^6.1.4
 
-  jiffy: ^5.0.0
+  jiffy: ^6.3.2
 
-  get_it: ^7.2.0
-  logger: ^1.1.0
-  modal_bottom_sheet: ^3.0.0-pre
+  get_it: ^8.0.3
+  logger: ^2.5.0
+  modal_bottom_sheet: ^3.0.0
 
 dev_dependencies:
   flutter_test:
