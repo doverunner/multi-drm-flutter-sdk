@@ -39,10 +39,15 @@ dependencies:
     path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
 
   #BetterPlayer for DOVERUNNER DRM
-  better_player:
+  # better_player:
+  #   git:
+  #     url: https://github.com/doverunner/betterplayer.git
+  #     ref: dev
+  
+  better_player_plus:
     git:
-      url: https://github.com/doverunner/betterplayer.git
-      ref: dev
+      url: https://github.com/doverunner/better_player_plus_for_doverunner.git
+      ref: v1.0.8
 
   # better_player:
   #   path: ../../../multi-drm-flutter-sample/
@@ -72,7 +77,7 @@ dependencies:
 
   connectivity_plus: ^6.1.0
 
-  jiffy: ^5.0.0
+  jiffy: ^6.3.2
 
   get_it: ^7.2.0
   logger: ^1.1.0
@@ -87,7 +92,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

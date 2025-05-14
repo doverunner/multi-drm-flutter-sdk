@@ -2,7 +2,7 @@ import 'package:advanced/features/advanced/domain/entities/download_status.dart'
 import 'package:advanced/features/advanced/domain/entities/drm_movie.dart';
 import 'package:advanced/features/advanced/presentation/controllers/drm_movie_controller.dart';
 import 'package:advanced/features/advanced/presentation/pages/views/movie_container.dart';
-import 'package:better_player/better_player.dart';
+import 'package:better_player_plus/better_player_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:io' show Platform;
