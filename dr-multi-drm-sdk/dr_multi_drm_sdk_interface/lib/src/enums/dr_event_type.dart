@@ -1,4 +1,4 @@
-/// Event type of PallyCon SDK Event
+/// Event type of SDK Event
 enum DrEventType {
   /// Download preparation completed
   prepare,
@@ -19,7 +19,7 @@ enum DrEventType {
   download,
 
   /// Error when the content information to be downloaded is incorrect
-  /// It mainly occurs when the value of the function parameter [PallyConContentConfiguration] is incorrect.
+  /// It mainly occurs when the value of the function parameter [DrContentConfiguration] is incorrect.
   contentDataError,
 
   /// License error

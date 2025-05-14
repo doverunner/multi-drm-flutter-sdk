@@ -2,12 +2,12 @@ import Foundation
 import UIKit
 import AVKit
 import Flutter
-import PallyConFPSSDK
+import DOVERUNNERFairPlay
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
     
-    var pallyconSdk: PallyConFPSSDK?
+    var doverunnerSdk: DOVERUNNERFairPlay?
     
     override func application(
         _ application: UIApplication,
@@ -16,10 +16,10 @@ import PallyConFPSSDK
         GeneratedPluginRegistrant.register(with: self)
         
         let controller: FlutterViewController = window?.rootViewController as! FlutterViewController
-        let pallyconChannel = FlutterMethodChannel(name: "com.pallycon/startActivity",
+        let flutterChannel = FlutterMethodChannel(name: "com.doverunner/startActivity",
                                                    binaryMessenger: controller.binaryMessenger)
         
-        pallyconChannel.setMethodCallHandler({
+        flutterChannel.setMethodCallHandler({
             [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
             guard call.method == "StartSecondActivity" else {
                 result(FlutterMethodNotImplemented)
@@ -47,8 +47,8 @@ import PallyConFPSSDK
         let siteId = drmJson["siteId"] as? String ?? ""
         let token = drmJson["token"] as? String ?? ""
 
-        // 1. PallyCon FPS SDK initialize
-        pallyconSdk = PallyConFPSSDK()
+        // 1. doverunner FairPlay SDK initialize
+        doverunnerSdk = DOVERUNNERFairPlay()
         guard let contentUrl = URL(string: url) else {
             return
         }
@@ -56,11 +56,11 @@ import PallyConFPSSDK
         let urlAsset = AVURLAsset(url: contentUrl)
         
         // 2. Acquire a Token information
-        let drm_content = PallyConDrmConfiguration(avURLAsset: urlAsset,
-                                                   contentId: contentId,
-                                                   certificateUrl: "https://license-global.pallycon.com/ri/fpsKeyManager.do?siteId=\(siteId)",
-                                                   authData: token)
-        pallyconSdk?.prepare(Content: drm_content)
+        let drm_config = FairPlayConfiguration(avURLAsset: urlAsset,
+                                               contentId: contentId,
+                                               certificateUrl: "https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=\(siteId)",
+                                               authData: token, delegate: self)
+        doverunnerSdk?.prepare(drm: drm_config)
         
         let playerItem = AVPlayerItem(asset: urlAsset)
         let avPlayer = AVPlayer(playerItem: playerItem)
@@ -72,10 +72,10 @@ import PallyConFPSSDK
     }
 }
 
-extension AppDelegate: PallyConFPSLicenseDelegate {
-    func license(result: PallyConResult) {
+extension AppDelegate: FairPlayLicenseDelegate {
+    func license(result: LicenseResult) {
+        print("---------------------------- License Result ")
         print("Content ID : \(result.contentId)")
-        print("Success    : \(result.isSuccess)")
-        print("Error      : \(result.getPallyConErrorForObjC())")
+        print("Key ID     : \(String(describing: result.keyId))")
     }
 }

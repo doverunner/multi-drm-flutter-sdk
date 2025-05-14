@@ -1,6 +1,6 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint pallycon_drm_sdk_ios.podspec` to validate before publishing.
+# Run `pod lib lint dr_multi_drm_sdk_ios.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
   s.name             = 'dr_multi_drm_sdk_ios'
@@ -11,12 +11,11 @@ A new Flutter DOVERUNNER FairPlay Streaming(FPS) SDK plugin project.
                        DESC
   s.homepage         = 'http://www.doverunner.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'DOVERUNNER' => 'yhpark@inka.co.kr' }
+  s.author           = { 'DOVERUNNER' => 'contentsecurity@doverunner.co.kr' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'PallyConFPSSDK'
-#   s.dependency 'PallyConFPSSDK', :podspec => './PallyConFPSSDK/PallyConFPSSDK.podspec'
+  s.dependency 'DOVERUNNERFairPlay'
 #   s.subspec "PallyConFPSSDK" do |sp|
 #     sp.framework   = 'CoreFoundation'
 #     sp.dependency   'PallyConFPSSDK', :path => "./PallyConFPSSDK/"

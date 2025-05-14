@@ -1,6 +1,6 @@
-# PallyCon DRM SDK advanced sample
+# DOVERUNNER Multi-DRM SDK advanced sample
 
-The PallyCon DRM SDK advanced sample is a sample project that provides DRM content download and streaming playback.
+The DOVERUNNER Multi-DRM SDK advanced sample is a sample project that provides DRM content download and streaming playback.
 
 ## packages
 ```
@@ -29,19 +29,19 @@ advanced
 > For help getting started with Flutter development, view the [online documentation][3], which offers tutorials, samples, guidance on mobile development, and a full API reference.
 
 ### Add package to `pubspec.yaml`
-- Add PallyCon Drm SDK package
-- Add BetterPlayer for PallyConDRM package
+- Add Multi-DRM SDK package
+- Add BetterPlayer for Multi-DRM package
 
     ```yaml
         # pubspec.yaml
 
-        # Add PallyCon Drm SDK package
-        pallycon_drm_sdk: ^1.2.0
+        # Add Multi-DRM SDK package
+        dr_multi_drm_sdk: ^1.2.0
         
-        # Add BetterPlayer for PallyConDRM package  
+        # Add BetterPlayer for Multi-DRM package  
         better_player:
         git:
-          url: https://github.com/inka-pallycon/betterplayer.git
+          url: https://github.com/doverunner/betterplayer.git
           ref: master
     ```
 ### Install package and run

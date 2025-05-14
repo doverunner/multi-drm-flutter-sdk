@@ -39,16 +39,27 @@ dependencies:
     path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
 
   #BetterPlayer for DOVERUNNER DRM
+  # better_player:
+  #   git:
+  #     url: https://github.com/doverunner/betterplayer.git
+  #     ref: dev
+  
   better_player_plus:
     git:
       url: https://github.com/doverunner/better_player_plus_for_doverunner.git
       ref: v1.0.8
 
+  # better_player:
+  #   path: ../../../multi-drm-flutter-sample/
+  #  drm_video:
+  #    path: ../../doverunner-drm_video
+  #  drm_video: ^0.0.1
+
   # path
-  path: ^1.9.1
+  path: ^1.8.2
 
   # GetX state management
-  get: ^4.7.2
+  get: ^4.6.5
   # Value equality
   equatable: ^2.0.3
   # Local cache
@@ -62,15 +73,15 @@ dependencies:
 
   dartz: ^0.10.1
 
-  dio: ^5.8.0+1
+  dio: ^4.0.6
 
-  connectivity_plus: ^6.1.4
+  connectivity_plus: ^6.1.0
 
   jiffy: ^6.3.2
 
-  get_it: ^8.0.3
-  logger: ^2.5.0
-  modal_bottom_sheet: ^3.0.0
+  get_it: ^7.2.0
+  logger: ^1.1.0
+  modal_bottom_sheet: ^3.0.0-pre
 
 dev_dependencies:
   flutter_test:
@@ -81,7 +92,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

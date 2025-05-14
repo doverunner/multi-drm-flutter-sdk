@@ -51,7 +51,8 @@ abstract class DrMultiDrmSdkPlatform extends PlatformInterface {
   }
 
   Future<String> getLicenseInformation(DrContentConfiguration config) {
-    throw UnimplementedError('getLicenseInformation() has not been implemented.');
+    throw UnimplementedError(
+        'getLicenseInformation() has not been implemented.');
   }
 
   // Download
@@ -84,7 +85,8 @@ abstract class DrMultiDrmSdkPlatform extends PlatformInterface {
   }
 
   Future<bool> needsMigrateDatabase(DrContentConfiguration config) {
-    throw UnimplementedError('needsMigrateDatabase() has not been implemented.');
+    throw UnimplementedError(
+        'needsMigrateDatabase() has not been implemented.');
   }
 
   Future<bool> migrateDatabase(DrContentConfiguration config) {
@@ -92,7 +94,8 @@ abstract class DrMultiDrmSdkPlatform extends PlatformInterface {
   }
 
   Future<bool> reDownloadCertification(DrContentConfiguration config) {
-    throw UnimplementedError('reDownloadCertification() has not been implemented.');
+    throw UnimplementedError(
+        'reDownloadCertification() has not been implemented.');
   }
 
   Future<bool> updateSecureTime() {

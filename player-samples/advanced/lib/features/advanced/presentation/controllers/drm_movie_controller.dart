@@ -18,9 +18,9 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
 
   static const inkaLicenseUrl =
       "https://drm-license.doverunner.com/ri/licenseManager.do";
-  static const certUrl =
-      "https://drm-license.doverunner.com/ri/fpsKeyManager.do";
   static const siteId = "DEMO";
+  static const certUrl =
+      "https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=${siteId}";
 
   var drContentConfigs = RxList<DrContentConfiguration>([]);
   var downloadPercent = <Tuple2<String, double>>[].obs;
@@ -158,15 +158,15 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   }
 
   downloadContent(DrmMovie drmMovie) {
-    final index = drContentConfigs
-        .indexWhere((p0) => p0.contentUrl == drmMovie.url);
+    final index =
+        drContentConfigs.indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
     if (index >= 0) {
       if (state![index].downloadStatus == DownloadStatus.pause) {
         DrMultiDrmSdk.resumeDownloads();
 
         // if (Platform.isIOS) {
-        //   DrMultiDrmSdk.resumeDownloadTask(pallyConContentConfigs[index]);
+        //   DrMultiDrmSdk.resumeDownloadTask(drContentConfigs[index]);
         // }
       } else {
         try {
@@ -197,15 +197,15 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   }
 
   pauseContent(DrmMovie drmMovie) {
-    final index = drContentConfigs
-        .indexWhere((p0) => p0.contentUrl == drmMovie.url);
+    final index =
+        drContentConfigs.indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
     DrMultiDrmSdk.stopDownload(drContentConfigs[index]);
   }
 
   removeContent(DrmMovie drmMovie) {
-    final index = drContentConfigs
-        .indexWhere((p0) => p0.contentUrl == drmMovie.url);
+    final index =
+        drContentConfigs.indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
     try {
       DrMultiDrmSdk.removeDownload(drContentConfigs[index]);
@@ -216,8 +216,8 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   }
 
   removeLicense(DrmMovie drmMovie) {
-    final index = drContentConfigs
-        .indexWhere((p0) => p0.contentUrl == drmMovie.url);
+    final index =
+        drContentConfigs.indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
     try {
       DrMultiDrmSdk.removeLicense(drContentConfigs[index]);
@@ -243,8 +243,8 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
     if (state == null) return;
 
     try {
-      var needsMigration = await DrMultiDrmSdk.needsMigrateDatabase(
-          drContentConfigs[index]);
+      var needsMigration =
+          await DrMultiDrmSdk.needsMigrateDatabase(drContentConfigs[index]);
       if (needsMigration) {
         await DrMultiDrmSdk.migrateDatabase(drContentConfigs[index]);
       }
@@ -317,14 +317,13 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
   }
 
   DrContentConfiguration getContentConfig(DrmMovie drmMovie) {
-    final index = drContentConfigs
-        .indexWhere((p0) => p0.contentUrl == drmMovie.url);
+    final index =
+        drContentConfigs.indexWhere((p0) => p0.contentUrl == drmMovie.url);
     return drContentConfigs[index];
   }
 
   int getIndex(DrmMovie drmMovie) {
-    return drContentConfigs
-        .indexWhere((p0) => p0.contentUrl == drmMovie.url);
+    return drContentConfigs.indexWhere((p0) => p0.contentUrl == drmMovie.url);
   }
 
   @override

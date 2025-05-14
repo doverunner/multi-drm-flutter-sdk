@@ -15,7 +15,6 @@ public class DownloadContentHandler: NSObject, FlutterStreamHandler {
 
     public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
         // event 연결
-        // PallyConSdk.getInstance(it).setDownloadProgress(events)
         self.events = events
         DrMultiSdk.shared.setDownloadProgress(eventSink: events)
         return nil
@@ -23,7 +22,6 @@ public class DownloadContentHandler: NSObject, FlutterStreamHandler {
 
     public func onCancel(withArguments arguments: Any?) -> FlutterError? {
         // event 연결 해제
-        // PallyConSdk.getInstance(it).setDownloadProgress(null)
         DrMultiSdk.shared.setDownloadProgress(eventSink: nil)
         events = nil
         return nil

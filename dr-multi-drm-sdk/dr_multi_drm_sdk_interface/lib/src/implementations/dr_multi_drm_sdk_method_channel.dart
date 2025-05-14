@@ -8,8 +8,7 @@ import '../enums/dr_download_state.dart';
 class MethodChannelPallyConDrmSdk extends DrMultiDrmSdkPlatform {
   static const _methodChannel = MethodChannel('com.doverunner.drmsdk');
 
-  static const _drEventChannel =
-      EventChannel('com.doverunner.drmsdk/dr_event');
+  static const _drEventChannel = EventChannel('com.doverunner.drmsdk/dr_event');
 
   static const _downloadProgressChannel =
       EventChannel('com.doverunner.drmsdk/download_progress');
@@ -28,8 +27,7 @@ class MethodChannelPallyConDrmSdk extends DrMultiDrmSdkPlatform {
   }
 
   @override
-  Future<String> getObjectForContent(
-      DrContentConfiguration config) async {
+  Future<String> getObjectForContent(DrContentConfiguration config) async {
     return await _methodChannel.invokeMethod(
         'getObjectForContent', _configToDynamicList(config));
   }
@@ -174,8 +172,7 @@ class MethodChannelPallyConDrmSdk extends DrMultiDrmSdkPlatform {
   }
 
   @override
-  Future<bool> reDownloadCertification(
-      DrContentConfiguration config) async {
+  Future<bool> reDownloadCertification(DrContentConfiguration config) async {
     try {
       return await _methodChannel.invokeMethod(
           'reDownloadCertification', _configToDynamicList(config));
