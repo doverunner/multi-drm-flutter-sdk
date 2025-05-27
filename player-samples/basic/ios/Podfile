@@ -1,5 +1,8 @@
+source 'https://cdn.cocoapods.org/'
+source 'https://github.com/doverunner/sdk-release.git'
+
 # Uncomment this line to define a global platform for your project
-platform :ios, '15.1'
+platform :ios, '14.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -9,6 +12,8 @@ project 'Runner', {
   'Profile' => :release,
   'Release' => :release,
 }
+
+pod 'DOVERUNNERFairPlay'
 
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
