@@ -29,16 +29,16 @@ basic
 > For help getting started with Flutter development, view the [online documentation][3], which offers tutorials, samples, guidance on mobile development, and a full API reference.
 
 ### Add package to `pubspec.yaml`
-- Add DOVERUNNER Multi Drm SDK package
-- Add BetterPlayer for DOVERUNNER DRM package
+- Add DoveRunner Multi Drm SDK package
+- Add BetterPlayer for DoveRunner DRM package
 
     ```yaml
         # pubspec.yaml
 
-        # Add DOVERUNNER Drm SDK package
+        # Add DoveRunner Drm SDK package
         dr_multi_drm_sdk: ^1.2.0
         
-        # Add BetterPlayer for DOVERUNNER DRM package
+        # Add BetterPlayer for DoveRunner DRM package
         better_player:
         git:
           url: https://github.com/doverunner/betterplayer

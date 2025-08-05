@@ -7,7 +7,7 @@ export 'package:dr_multi_drm_sdk_android/dr_multi_drm_sdk_android.dart';
 export 'package:dr_multi_drm_sdk_ios/dr_multi_drm_sdk_ios.dart';
 export 'package:dr_multi_drm_sdk_interface/dr_multi_drm_sdk_interface.dart';
 
-/// DOVERUNNER Multi DRM SDK for using Multi-DRM.
+/// DoveRunner Multi DRM SDK for using Multi-DRM.
 class DrMultiDrmSdk {
   /// Notifications of events occurring in the SDK.
   static Stream<DrEvent> get onDrEvent =>

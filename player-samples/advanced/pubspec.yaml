@@ -1,5 +1,5 @@
 name: advanced
-description: DOVERUNNER Multi DRM SDK advanced sample
+description: DoveRunner Multi DRM SDK advanced sample
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -38,7 +38,7 @@ dependencies:
   dr_multi_drm_sdk:
     path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
 
-  #BetterPlayer for DOVERUNNER DRM
+  #BetterPlayer for DoveRunner DRM
   # better_player:
   #   git:
   #     url: https://github.com/doverunner/betterplayer.git
@@ -47,7 +47,7 @@ dependencies:
   better_player_plus:
     git:
       url: https://github.com/doverunner/better_player_plus_for_doverunner.git
-      ref: v1.0.8
+      ref: 1.0.9
 
   # better_player:
   #   path: ../../../multi-drm-flutter-sample/

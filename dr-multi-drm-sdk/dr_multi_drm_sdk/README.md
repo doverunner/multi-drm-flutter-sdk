@@ -1,4 +1,4 @@
-## **DOVERUNNER MULTI DRM SDK** for Flutter Development Guide
+## **DoveRunner MULTI DRM SDK** for Flutter Development Guide
 
 [![pub package](https://img.shields.io/badge/puv-1.1.5-orange)](https://pub.dartlang.org/packages/)
 
@@ -12,7 +12,7 @@ A Flutter dr_multi_drm_sdk plugin which provides easy to apply Multi-DRM(Android
 
 ## **Important**
 
-- To develop using the SDK, you must first sign up for the DOVERUNNER Admin Site and obtain a Site ID.
+- To develop using the SDK, you must first sign up for the DoveRunner Admin Site and obtain a Site ID.
 
 ## **SDK usage**
 
@@ -74,7 +74,7 @@ gpr.token = GITHUB_ACCESS_TOKEN
 <details>
 <summary>iOS</summary>
 
-`DOVERUNNER DRM SDK Flutter` uses `PallyConFPSSDK`. `PallyConFPSSDK` is supposed to be downloaded as `cocoapods`.
+`DoveRunner DRM SDK Flutter` uses `DoveRunnerFairPlay`. `DoveRunnerFairPlay` is supposed to be downloaded as `cocoapods`.
 
 ### SDK requirements
 

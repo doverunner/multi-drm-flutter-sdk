@@ -1,6 +1,6 @@
-# DOVERUNNER Multi-DRM SDK advanced sample
+# DoveRunner Multi-DRM SDK advanced sample
 
-The DOVERUNNER Multi-DRM SDK advanced sample is a sample project that provides DRM content download and streaming playback.
+The DoveRunner Multi-DRM SDK advanced sample is a sample project that provides DRM content download and streaming playback.
 
 ## packages
 ```

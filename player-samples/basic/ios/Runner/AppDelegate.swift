@@ -2,12 +2,12 @@ import Foundation
 import UIKit
 import AVKit
 import Flutter
-import DOVERUNNERFairPlay
+import DoveRunnerFairPlay
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
     
-    var doverunnerSdk: DOVERUNNERFairPlay?
+    var doverunnerSdk: DoveRunnerFairPlay?
     
     override func application(
         _ application: UIApplication,
@@ -48,7 +48,7 @@ import DOVERUNNERFairPlay
         let token = drmJson["token"] as? String ?? ""
 
         // 1. doverunner FairPlay SDK initialize
-        doverunnerSdk = DOVERUNNERFairPlay()
+        doverunnerSdk = DoveRunnerFairPlay()
         guard let contentUrl = URL(string: url) else {
             return
         }

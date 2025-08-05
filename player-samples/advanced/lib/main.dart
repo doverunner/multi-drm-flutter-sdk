@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'DOVERUNNER DRM SDK',
+      title: 'DoveRunner DRM SDK',
       home: const DrmContentPage(),
       initialBinding: DrmMovieBinding(),
       getPages: AppPages.pages,

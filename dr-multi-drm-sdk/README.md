@@ -1,19 +1,19 @@
-# DOVERUNNER Multi DRM SDK for flutter
+# DoveRunner Multi DRM SDK for flutter
 
-**`DOVERUNNER Multi DRM SDK for flutter`** follows a federated architecture, which includes the following packages.
-> In the trial account, you can freely test SDK products within the trial limit on the number of licenses issued. However, in order to apply the SDK to commercial services, you must apply for a plan that includes SDK usage rights when subscribing to DOVERUNNER commercial plans.
+**`DoveRunner Multi DRM SDK for flutter`** follows a federated architecture, which includes the following packages.
+> In the trial account, you can freely test SDK products within the trial limit on the number of licenses issued. However, in order to apply the SDK to commercial services, you must apply for a plan that includes SDK usage rights when subscribing to DoveRunner commercial plans.
 
 This document describes the usage and API of **`dr_multi_drm_sdk`**.
 The example of **`dr_multi_drm_sdk`** is available on [player-sample][9].
 
 ## **important**
 
-> To develop using the SDK, you must first sign up for the [DOVERUNNER Site][10] and obtain a **`Site ID`**.
+> To develop using the SDK, you must first sign up for the [DoveRunner Site][10] and obtain a **`Site ID`**.
 
 ## Packages
 
 ```
-// flutter plugin for DOVERUNNER Multi-DRM SDK
+// flutter plugin for DoveRunner Multi-DRM SDK
 dr-multi-drm-sdk
     |
     ├─ dr_multi_drm_sdk

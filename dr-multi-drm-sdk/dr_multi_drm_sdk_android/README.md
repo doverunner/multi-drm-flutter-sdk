@@ -2,7 +2,7 @@
 
 [![pub package](https://img.shields.io/badge/puv-1.1.5-orange)](https://pub.dartlang.org/packages/pallycon_drm_sdk)
 
-This is the official Android implementation of the [dr_multi_drm_sdk][1] plugin developed by [DOVERUNNER][2] for use in Flutter applications.
+This is the official Android implementation of the [dr_multi_drm_sdk][1] plugin developed by [DoveRunner][2] for use in Flutter applications.
 
 ## Usage
 
@@ -19,11 +19,11 @@ For more detailed instructions on using the API, please refer to the [README.md]
 
 ## Issues
 
-If you encounter any issues, bugs, or have any feature requests, please file them as an issue on the [GitHub][4] page. We also offer commercial support and can be reached at [DOVERUNNER Site][2].
+If you encounter any issues, bugs, or have any feature requests, please file them as an issue on the [GitHub][4] page. We also offer commercial support and can be reached at [DoveRunner Site][2].
 
 ## Author
 
-This DrMultiDrmSdk plugin for Flutter is developed by [DOVERUNNER][2].
+This DrMultiDrmSdk plugin for Flutter is developed by [DoveRunner][2].
 
 [1]: https://pub.dev/packages/dr_multi_drm_sdk
 [2]: https://www.doverunner.com

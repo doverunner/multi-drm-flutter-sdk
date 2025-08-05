@@ -16,11 +16,11 @@ To create a new platform-specific implementation for the `dr_multi_drm_sdk` plug
 
 ## Issues
 
-If you encounter any issues, bugs, or have any feature requests, please file them as an issue on the [GitHub][5] page. We also offer commercial support and can be reached at [DOVERUNNER Site][6].
+If you encounter any issues, bugs, or have any feature requests, please file them as an issue on the [GitHub][5] page. We also offer commercial support and can be reached at [DoveRunner Site][6].
 
 ## Author
 
-This DrMultiDrmSdk plugin for Flutter is developed by [DOVERUNNER](https://www.doverunner.com).
+This DrMultiDrmSdk plugin for Flutter is developed by [DoveRunner](https://www.doverunner.com).
 
 [1]: ../dr_multi_drm_sdk
 [2]: https://flutter.dev/docs/development/packages-and-plugins/developing-packages#federated-plugins

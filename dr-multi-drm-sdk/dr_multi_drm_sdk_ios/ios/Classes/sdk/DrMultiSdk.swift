@@ -1,6 +1,6 @@
 import Foundation
 import AVKit
-import DOVERUNNERFairPlay
+import DoveRunnerFairPlay
 
 struct DrmContent {
     let siteId: String
@@ -62,7 +62,7 @@ class DrMultiSdk: NSObject {
     private var progressEvent: FlutterEventSink?
 
     private var siteId: String = ""
-    private var fpsSdk: DOVERUNNERFairPlay?
+    private var fpsSdk: DoveRunnerFairPlay?
     private var downloadTaskMap = [DownloadTask:DrmContent]()
     private var downloadedContentMap = [String:DrmContent]()
 
@@ -96,7 +96,7 @@ class DrMultiSdk: NSObject {
 
     public func initialize(siteId: String) {
         self.siteId = siteId
-        fpsSdk = DOVERUNNERFairPlay()
+        fpsSdk = DoveRunnerFairPlay()
     }
 
     public func release()  {

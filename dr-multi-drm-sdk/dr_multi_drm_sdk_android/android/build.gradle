@@ -64,7 +64,7 @@ android {
 }
 
 dependencies {
-    // DOVERUNNER widevine Sdk
+    // DoveRunner widevine Sdk
     implementation "com.doverunner:widevine:$dr_version"
 
     implementation "androidx.databinding:databinding-runtime:$data_binding_version"
