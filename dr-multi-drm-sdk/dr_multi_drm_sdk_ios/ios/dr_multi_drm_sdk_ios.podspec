@@ -11,12 +11,12 @@ A new Flutter DoveRunner FairPlay Streaming(FPS) SDK plugin project.
                        DESC
   s.homepage         = 'http://www.doverunner.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'DoveRunner' => 'contentsecurity@doverunner.co.kr' }
+  s.author           = { 'DoveRunner' => 'support@doverunner.co.kr' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  #s.dependency 'DoveRunnerFairPlay'
-  s.vendored_frameworks = '../../../../sdklib/DoveRunnerFairPlay.xcframework'
+  s.dependency 'DoveRunnerFairPlay'
+  #s.vendored_frameworks = '../../../../sdklib/DoveRunnerFairPlay.xcframework'
   
   # s.subspec "DoveRunnerFairPlay" do |sp|
   #   sp.framework   = 'CoreFoundation'
