@@ -54,8 +54,8 @@ allprojects {
         maven {
             url = uri("https://maven.pkg.github.com/doverunner/widevine-android-sdk")
             credentials {
-                username = project.findProperty("gpr.user") ?: ""
-                password = project.findProperty("gpr.token") ?: ""
+                username = ""
+                password = ""
             }
         }
     }

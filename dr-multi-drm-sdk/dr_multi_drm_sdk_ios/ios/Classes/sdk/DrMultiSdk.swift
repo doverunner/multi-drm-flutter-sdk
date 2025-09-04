@@ -140,7 +140,7 @@ class DrMultiSdk: NSObject {
         for (task, downloadContent) in downloadTaskMap {
             print("download task \(downloadContent.contentId)")
             if downloadContent.url == url {
-                print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                downloadTaskMap[task]?.downloadState = DownloadState.downloading
                 task.resume()
                 return
             }
@@ -200,7 +200,7 @@ class DrMultiSdk: NSObject {
         }
     }
 
-    public func resumeDwonloadTask(_ contentId: String) {
+    public func resumeDownloadTask(_ contentId: String) {
         for (task, downloadContent) in downloadTaskMap {
             if downloadContent.contentId == contentId {
                 task.resume()
@@ -210,7 +210,7 @@ class DrMultiSdk: NSObject {
         }
     }
 
-    public func cancelDwonloadTask(_ contentId: String) {
+    public func cancelDownloadTask(_ contentId: String) {
         for (task, downloadContent) in downloadTaskMap {
             if downloadContent.contentId == contentId {
                 task.cancel()
@@ -270,7 +270,6 @@ extension DrMultiSdk: FairPlayDownloadDelegate {
         for (task, downloadContent) in downloadTaskMap {
             if downloadContent.contentId == contentId {
                 contentUrl = downloadContent.url
-                downloadTaskMap.removeValue(forKey: task)
                 break
             }
         }

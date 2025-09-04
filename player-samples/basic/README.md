@@ -36,13 +36,13 @@ basic
         # pubspec.yaml
 
         # Add DoveRunner Drm SDK package
-        dr_multi_drm_sdk: ^1.2.0
+        dr_multi_drm_sdk: ^1.2.X
         
         # Add BetterPlayer for DoveRunner DRM package
-        better_player:
+        better_player_plus:
         git:
-          url: https://github.com/doverunner/betterplayer
-          ref: master
+          url: https://github.com/doverunner/better_player_plus_for_doverunner.git
+          ref: 1.0.X
     ```
 ### Install package and run
 - Connect Android or iOS device and install package.

@@ -162,18 +162,10 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
         drContentConfigs.indexWhere((p0) => p0.contentUrl == drmMovie.url);
 
     if (index >= 0) {
-      if (state![index].downloadStatus == DownloadStatus.pause) {
-        DrMultiDrmSdk.resumeDownloads();
-
-        // if (Platform.isIOS) {
-        //   DrMultiDrmSdk.resumeDownloadTask(drContentConfigs[index]);
-        // }
-      } else {
-        try {
-          DrMultiDrmSdk.addStartDownload(drContentConfigs[index]);
-        } on IllegalArgumentException catch (e) {
-          print(e.message);
-        }
+      try {
+        DrMultiDrmSdk.addStartDownload(drContentConfigs[index]);
+      } on IllegalArgumentException catch (e) {
+        print(e.message);
       }
     }
 

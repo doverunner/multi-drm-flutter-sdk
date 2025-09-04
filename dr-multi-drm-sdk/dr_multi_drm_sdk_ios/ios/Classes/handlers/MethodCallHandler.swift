@@ -117,7 +117,7 @@ public class MethodCallHandler: NSObject {
         //                drmLicenseUrl: licenseUrl,
         //                appleCertUrl: appleCertUrl
         //            )
-        DrMultiSdk.shared.resumeDwonloadTask(contentId)
+        DrMultiSdk.shared.cancelDownloadTask(contentId)
     }
 
     public func onResumeDownloads() {
@@ -141,7 +141,7 @@ public class MethodCallHandler: NSObject {
         }
 
         if url.hasPrefix("http") {
-            DrMultiSdk.shared.resumeDwonloadTask(contentId)
+            DrMultiSdk.shared.resumeDownloadTask(contentId)
         }
     }
 
@@ -154,7 +154,7 @@ public class MethodCallHandler: NSObject {
         }
 
         if url.hasPrefix("http") {
-            DrMultiSdk.shared.cancelDwonloadTask(contentId)
+            DrMultiSdk.shared.cancelDownloadTask(contentId)
         }
     }
 
