@@ -16,7 +16,7 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
 
   final GetDrmContentUseCase _getDrmContentUseCaseUseCase;
 
-  static const inkaLicenseUrl =
+  static const drLicenseUrl =
       "https://drm-license.doverunner.com/ri/licenseManager.do";
   static const siteId = "DEMO";
   static const certUrl =
@@ -143,7 +143,7 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
           state![i].contentId,
           state![i].url,
           token: state![i].token,
-          licenseUrl: state![i].licenseServerUrl ?? inkaLicenseUrl,
+          licenseUrl: state![i].licenseServerUrl ?? drLicenseUrl,
           licenseCipherTablePath: state![i].licenseCipherPath,
           certificateUrl: state![i].licenseCertUrl ?? certUrl,
         );

@@ -32,8 +32,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
-  dr_multi_drm_sdk:
-    path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
+  dr_multi_drm_sdk: ^1.2.0
 
 dev_dependencies:
   flutter_test:

@@ -35,8 +35,7 @@ dependencies:
   cupertino_icons: ^1.0.6
 
   #doverunner Drm SDK
-  dr_multi_drm_sdk:
-    path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
+  dr_multi_drm_sdk: ^1.2.0
 
   #BetterPlayer for DoveRunner DRM
   # better_player:
@@ -44,16 +43,11 @@ dependencies:
   #     url: https://github.com/doverunner/betterplayer.git
   #     ref: dev
   
+  #Better Player Plus for DoveRunner DRM
   better_player_plus:
     git:
       url: https://github.com/doverunner/better_player_plus_for_doverunner.git
       ref: 1.0.9
-
-  # better_player:
-  #   path: ../../../multi-drm-flutter-sample/
-  #  drm_video:
-  #    path: ../../doverunner-drm_video
-  #  drm_video: ^0.0.1
 
   # path
   path: ^1.8.2

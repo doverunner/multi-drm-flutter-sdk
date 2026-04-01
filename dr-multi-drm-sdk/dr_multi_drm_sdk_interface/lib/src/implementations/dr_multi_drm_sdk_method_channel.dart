@@ -67,7 +67,7 @@ class MethodChannelPallyConDrmSdk extends DrMultiDrmSdkPlatform {
 
   // Delegate
   @override
-  Stream<DrEvent> get onPallyConEvent {
+  Stream<DrEvent> get onDrEvent {
     if (_drEventStream != null) {
       return _drEventStream!;
     }
