@@ -1,18 +1,18 @@
 # dr_multi_drm_sdk_android
 
-[![pub package](https://img.shields.io/badge/puv-1.1.5-orange)](https://pub.dartlang.org/packages/pallycon_drm_sdk)
+[![pub package](https://img.shields.io/badge/pub-1.2.0-orange)](https://pub.dev/packages/dr_multi_drm_sdk_android)
 
 This is the official Android implementation of the [dr_multi_drm_sdk][1] plugin developed by [DoveRunner][2] for use in Flutter applications.
 
 ## Usage
 
-On iOS, the [dr_multi_drm_sdk][1] plugin has been available since version 1.2.0, and we always recommend using the latest version (>=1.1.5).
+On Android, the [dr_multi_drm_sdk][1] plugin has been available since version 1.2.0, and we always recommend using the latest version (>=1.2.0).
 It will automatically be included as a dependency when you include `dr_multi_drm_sdk: ">=1.2.0"` in your app's pubspec.yaml file.
 
 ```yaml
 # pubspec.yaml
 dependencies:
-  pallycon_drm_sdk: ">=1.2.0"
+  dr_multi_drm_sdk: ">=1.2.0"
 ```
 
 For more detailed instructions on using the API, please refer to the [README.md][3] file of the [dr_multi_drm_sdk][1] package.
@@ -27,5 +27,5 @@ This DrMultiDrmSdk plugin for Flutter is developed by [DoveRunner][2].
 
 [1]: https://pub.dev/packages/dr_multi_drm_sdk
 [2]: https://www.doverunner.com
-[3]: ../dr_multi_drm_sdk/README.md
+[3]: https://pub.dev/packages/dr_multi_drm_sdk
 [4]: https://github.com/doverunner/multi-drm-flutter-sdk/issues

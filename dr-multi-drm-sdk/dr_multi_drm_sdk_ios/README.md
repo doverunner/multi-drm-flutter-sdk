@@ -1,6 +1,6 @@
 # dr_multi_drm_sdk_ios
 
-[![pub package](https://img.shields.io/badge/puv-1.2.0-orange)](https://pub.dartlang.org/packages/pallycondrmsdk)
+[![pub package](https://img.shields.io/badge/pub-1.2.0-orange)](https://pub.dev/packages/dr_multi_drm_sdk_ios)
 
 This is the official iOS implementation of the [dr_multi_drm_sdk][1] plugin developed by [DoveRunner][2] for use in Flutter applications.
 
@@ -27,5 +27,5 @@ This DrMultiDrmSdk plugin for Flutter is developed by [DoveRunner][2].
 
 [1]: https://pub.dev/packages/dr_multi_drm_sdk
 [2]: https://www.doverunner.com
-[3]: ../dr_multi_drm_sdk/README.md
+[3]: https://pub.dev/packages/dr_multi_drm_sdk
 [4]: https://github.com/doverunner/multi-drm-flutter-sdk/issues

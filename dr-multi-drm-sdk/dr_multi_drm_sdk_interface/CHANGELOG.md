@@ -1,3 +1,7 @@
+# Version 1.2.0
+
+> - Rebranded from PallyCon to DoveRunner
+
 # Version 1.1.3
 
 >- added stopDownload method to stop downloading content
@@ -18,4 +22,4 @@
 
 # Version 1.0.0
 
-> - PallyConSDK-Interface has been release to version 1.0.0
+> - PallyConSDK-Interface has been released to version 1.0.0

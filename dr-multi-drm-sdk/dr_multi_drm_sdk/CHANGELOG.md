@@ -1,3 +1,7 @@
+# Version 1.2.0
+
+> - Rebranded from PallyCon to DoveRunner
+
 # Version 1.1.5
 
 >- The widevine SDK 4.3.2 is distributed via GitHub packages and can be downloaded using a github access token.
@@ -26,5 +30,5 @@
 
 # Version 1.0.0
 
-> - PallyConSDK has been release to version 1.0.0 
+> - PallyConSDK has been released to version 1.0.0 
 >   - PallyConSDK 1.0.0 is based on Flutter.
