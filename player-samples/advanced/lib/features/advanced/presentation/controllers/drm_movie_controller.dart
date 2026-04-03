@@ -86,11 +86,13 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
           break;
       }
       if (state != null) {
-        state![state!.indexWhere((p0) => p0.url == event.url)] =
-            state![state!.indexWhere((p0) => p0.url == event.url)].copyWith(
-          downloadStatus: downloadState,
-        );
-        update(null, true);
+        var index = state!.indexWhere((p0) => p0.url == event.url);
+        if (index >= 0) {
+          state![index] = state![index].copyWith(
+            downloadStatus: downloadState,
+          );
+          update(null, true);
+        }
       }
     }).onError((error) {
       if (state != null) {
