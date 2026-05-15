@@ -8,7 +8,7 @@ buildscript {
     ext.coroutines_version = '1.10.2'
     ext.gson_version = '2.13.1'
     ext.crypto_ktx_verion = '1.1.0'
-    ext.dr_version = '4.5.1'
+    ext.dr_version = '4.5.2'
     ext.data_binding_version = '3.5.0'
     repositories {
         google()
