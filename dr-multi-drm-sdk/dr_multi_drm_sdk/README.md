@@ -35,13 +35,14 @@ android {
 
 **Permissions**
 
-Inside the SDK, the following 4 items are used in relation to user permission.
+Inside the SDK, the following 5 items are used in relation to user permission.
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 ```
 
 You can add the Maven repository configuration to the repositories block in your android/build.gradle file as follows:
