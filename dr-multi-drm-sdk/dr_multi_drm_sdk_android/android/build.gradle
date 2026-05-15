@@ -3,12 +3,12 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '2.1.10'
-    ext.media3_version = '1.5.1'
-    ext.core_ktx_version = '1.13.1'
-    ext.coroutines_version = '1.8.1'
-    ext.gson_version = '2.11.0'
-    ext.crypto_ktx_verion = '1.1.0-alpha06'
-    ext.dr_version = '4.4.0'
+    ext.media3_version = '1.8.0'
+    ext.core_ktx_version = '1.17.0'
+    ext.coroutines_version = '1.10.2'
+    ext.gson_version = '2.13.1'
+    ext.crypto_ktx_verion = '1.1.0'
+    ext.dr_version = '4.5.1'
     ext.data_binding_version = '3.5.0'
     repositories {
         google()

@@ -1,3 +1,7 @@
+# Version 1.2.1
+
+>- Upgraded the bundled Widevine library from 4.4.0 to 4.5.2.
+
 # Version 1.1.5
 
 >- The widevine SDK 4.3.2 is distributed via GitHub packages and can be downloaded using a github access token.

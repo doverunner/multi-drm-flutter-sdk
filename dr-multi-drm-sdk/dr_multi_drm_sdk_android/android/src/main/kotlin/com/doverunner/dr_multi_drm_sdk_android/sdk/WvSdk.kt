@@ -209,7 +209,7 @@ class WvSdk(private val context: Context) {
                 wvSDKList[config.contentId]!!.updateSecure({
                     print("update secure time")
                     val index =
-                        contentDataList.indices.find { contentDataList[it].url == config.contentUrl }
+                        contentDataList.indices.find { contentDataList[it].contentId == config.contentId }
                     if (index != null) {
                         val gson = Gson().toJson(contentDataList[index])
                         continuation.resume(gson, null)
