@@ -1,6 +1,6 @@
-# pallycon_drm_sdk_example
+# dr_multi_drm_sdk_example
 
-Demonstrates how to use the pallycon_drm_sdk plugin.
+Demonstrates how to use the dr_multi_drm_sdk plugin.
 
 ## Getting Started
 
