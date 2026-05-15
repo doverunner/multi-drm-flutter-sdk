@@ -1,4 +1,4 @@
-# Version 1.2.1
+# Version 1.2.2
 
 >- Upgraded the bundled Widevine library from 4.4.0 to 4.5.2.
 
