@@ -1,3 +1,7 @@
+# Version 1.2.2
+
+> - Rebranded from PallyConEvent to DrEvent
+
 # Version 1.2.0
 
 > - Rebranded from PallyCon to DoveRunner

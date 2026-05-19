@@ -12,9 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  dr_multi_drm_sdk_interface: ^1.2.0
+  dr_multi_drm_sdk_interface: ^1.2.2
   dr_multi_drm_sdk_android: ^1.2.2
-  dr_multi_drm_sdk_ios: ^1.2.0
+  dr_multi_drm_sdk_ios: ^1.2.2
 
 dev_dependencies:
   flutter_test:
