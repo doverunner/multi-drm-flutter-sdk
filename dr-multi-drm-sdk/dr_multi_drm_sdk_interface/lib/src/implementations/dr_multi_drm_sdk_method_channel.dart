@@ -5,7 +5,7 @@ import '../dr_multi_drm_sdk_interface.dart';
 import '../enums/dr_download_state.dart';
 
 /// An implementation of [DrMultiDrmSdkPlatform] that uses method channels.
-class MethodChannelPallyConDrmSdk extends DrMultiDrmSdkPlatform {
+class MethodChannelDrMultiDrmSdk extends DrMultiDrmSdkPlatform {
   static const _methodChannel = MethodChannel('com.doverunner.drmsdk');
 
   static const _drEventChannel = EventChannel('com.doverunner.drmsdk/dr_event');
@@ -38,43 +38,43 @@ class MethodChannelPallyConDrmSdk extends DrMultiDrmSdkPlatform {
     final String state = await _methodChannel.invokeMethod(
         'getDownloadState', _configToDynamicList(config));
 
-    var pallyConDownloadState = DrDownloadState.NOT;
+    var drDownloadState = DrDownloadState.NOT;
     switch (state) {
       case "DOWNLOADING":
         {
-          pallyConDownloadState = DrDownloadState.DOWNLOADING;
+          drDownloadState = DrDownloadState.DOWNLOADING;
         }
         break;
       case "COMPLETED":
         {
-          pallyConDownloadState = DrDownloadState.COMPLETED;
+          drDownloadState = DrDownloadState.COMPLETED;
         }
         break;
       case "PAUSED":
         {
-          pallyConDownloadState = DrDownloadState.PAUSED;
+          drDownloadState = DrDownloadState.PAUSED;
         }
         break;
       default:
         {
-          pallyConDownloadState = DrDownloadState.NOT;
+          drDownloadState = DrDownloadState.NOT;
         }
         break;
     }
 
-    return pallyConDownloadState;
+    return drDownloadState;
   }
 
   // Delegate
   @override
-  Stream<DrEvent> get onPallyConEvent {
+  Stream<DrEvent> get onDrEvent {
     if (_drEventStream != null) {
       return _drEventStream!;
     }
-    var pallyConEventStream = _drEventChannel.receiveBroadcastStream();
+    var drEventStream = _drEventChannel.receiveBroadcastStream();
 
-    _drEventStream = pallyConEventStream
-        .where((pallyConEvent) => pallyConEvent != null)
+    _drEventStream = drEventStream
+        .where((drEvent) => drEvent != null)
         .map((dynamic element) =>
             DrEvent.fromMap(element.cast<String, dynamic>()))
         .handleError((error) {
@@ -98,7 +98,7 @@ class MethodChannelPallyConDrmSdk extends DrMultiDrmSdkPlatform {
         _downloadProgressChannel.receiveBroadcastStream();
 
     _downloadProgressStream = downloadProgressStream
-        .where((pallyConDownload) => pallyConDownload != null)
+        .where((drDownload) => drDownload != null)
         .map((dynamic element) =>
             DrDownload.fromMap(element.cast<String, dynamic>()))
         .handleError((error) {

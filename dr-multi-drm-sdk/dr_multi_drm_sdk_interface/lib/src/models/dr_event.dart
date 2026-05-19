@@ -45,110 +45,110 @@ class DrEvent {
       message.hashCode;
 
   static DrEvent fromMap(dynamic message) {
-    final Map<dynamic, dynamic> pallyConEvent = message;
+    final Map<dynamic, dynamic> drEvent = message;
 
-    if (!pallyConEvent.containsKey('contentId')) {
-      throw ArgumentError.value(pallyConEvent, 'contentId',
+    if (!drEvent.containsKey('contentId')) {
+      throw ArgumentError.value(drEvent, 'contentId',
           'The supplied map doesn\'t contain the mandatory key `contentId`.');
     }
 
-    if (!pallyConEvent.containsKey('url')) {
-      throw ArgumentError.value(pallyConEvent, 'url',
+    if (!drEvent.containsKey('url')) {
+      throw ArgumentError.value(drEvent, 'url',
           'The supplied map doesn\'t contain the mandatory key `url`.');
     }
 
-    if (!pallyConEvent.containsKey('eventType')) {
-      throw ArgumentError.value(pallyConEvent, 'eventType',
+    if (!drEvent.containsKey('eventType')) {
+      throw ArgumentError.value(drEvent, 'eventType',
           'The supplied map doesn\'t contain the mandatory key `eventType`.');
     }
 
-    final String? eventType = pallyConEvent['eventType'] as String?;
+    final String? eventType = drEvent['eventType'] as String?;
     switch (eventType) {
       case 'prepare':
         return DrEvent(
             eventType: DrEventType.prepare,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'complete':
         return DrEvent(
             eventType: DrEventType.complete,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'pause':
         return DrEvent(
             eventType: DrEventType.pause,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'remove':
         return DrEvent(
             eventType: DrEventType.remove,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'stop':
         return DrEvent(
             eventType: DrEventType.stop,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'contentDataError':
         return DrEvent(
             eventType: DrEventType.contentDataError,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'drmError':
         return DrEvent(
             eventType: DrEventType.drmError,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'licenseServerError':
         return DrEvent(
             eventType: DrEventType.licenseServerError,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            errorCode: pallyConEvent['errorCode'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            errorCode: drEvent['errorCode'],
+            message: drEvent['message']);
       case 'downloadError':
         return DrEvent(
             eventType: DrEventType.downloadError,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'networkConnectedError':
         return DrEvent(
             eventType: DrEventType.networkConnectedError,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'detectedDeviceTimeModifiedError':
         return DrEvent(
             eventType: DrEventType.detectedDeviceTimeModifiedError,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'migrationError':
         return DrEvent(
             eventType: DrEventType.migrationError,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       case 'licenseCipherError':
         return DrEvent(
             eventType: DrEventType.licenseCipherError,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
       default:
         return DrEvent(
             eventType: DrEventType.unknown,
-            contentId: pallyConEvent['contentId'],
-            url: pallyConEvent['url'],
-            message: pallyConEvent['message']);
+            contentId: drEvent['contentId'],
+            url: drEvent['url'],
+            message: drEvent['message']);
     }
   }
 }

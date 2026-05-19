@@ -156,7 +156,7 @@ class WvSdk(private val context: Context) {
         DrWvSDK.removeWvEventListener(listener)
         DrWvSDK.addWvEventListener(listener)
 //        wvSDKList.entries.firstOrNull()?.let { (_, sdk) ->
-//            sdk.setPallyConEventListener(listener)
+//            sdk.setDrEventListener(listener)
 //        }
     }
 
