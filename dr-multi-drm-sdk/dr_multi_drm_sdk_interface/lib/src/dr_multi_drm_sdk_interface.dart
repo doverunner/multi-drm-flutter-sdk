@@ -10,11 +10,11 @@ abstract class DrMultiDrmSdkPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static DrMultiDrmSdkPlatform _instance = MethodChannelPallyConDrmSdk();
+  static DrMultiDrmSdkPlatform _instance = MethodChannelDrMultiDrmSdk();
 
   /// The default instance of [DrMultiDrmSdkPlatform] to use.
   ///
-  /// Defaults to [MethodChannelPallyConDrmSdk].
+  /// Defaults to [MethodChannelDrMultiDrmSdk].
   static DrMultiDrmSdkPlatform get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
@@ -27,7 +27,7 @@ abstract class DrMultiDrmSdkPlatform extends PlatformInterface {
 
   // Delegate
   Stream<DrEvent> get onDrEvent {
-    throw UnimplementedError('onPallyConEvent() has not been implemented.');
+    throw UnimplementedError('onDrEvent() has not been implemented.');
   }
 
   Stream<DrDownload> get onDownloadProgress {
