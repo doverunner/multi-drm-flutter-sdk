@@ -1,9 +1,10 @@
-# Version 1.3.0
+# Version 1.2.2
 
 > - changed
 
 # Version 1.2.0
 
+> - Rebranded from PallyCon to DoveRunner
 > - update PallyConFPSSDK has been applied to betterplayer.
 
 

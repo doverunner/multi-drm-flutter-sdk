@@ -1,3 +1,7 @@
+# Version 1.2.0
+
+> - Rebranded from PallyCon to DoveRunner
+
 # Version 1.1.3
 
 >- added stopDownload method to stop downloading content
