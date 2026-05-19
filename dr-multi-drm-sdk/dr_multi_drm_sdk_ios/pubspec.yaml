@@ -2,7 +2,7 @@ name: dr_multi_drm_sdk_ios
 description: DoveRunner Multi-DRM Flutter SDK. This plugin provides the iOS implementation for a DoveRunnerFairPlay SDK.
 version: 1.2.0
 homepage: https://doverunner.com/
-repository: https://github.com/doverunner/multi-drm-flutter-sdk/tree/main/pallycon-drm-sdk/pallycon_drm_sdk_android
+repository: https://github.com/doverunner/multi-drm-flutter-sdk/tree/main/dr-multi-drm-sdk/dr_multi_drm_sdk_ios
 
 environment:
   sdk: ">=2.17.5 <4.0.0"
@@ -12,9 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  dr_multi_drm_sdk_interface:
-    path: ../dr_multi_drm_sdk_interface
-#  dr_multi_drm_sdk_interface: ^1.2.0
+  dr_multi_drm_sdk_interface: ^1.2.0
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 # dr_multi_drm_sdk_interface
 
-[![pub package](https://img.shields.io/badge/puv-1.1.3-orange)](https://pub.dartlang.org/packages/pallycondrmsdk)
+[![pub package](https://img.shields.io/badge/pub-1.2.0-orange)](https://pub.dev/packages/dr_multi_drm_sdk_interface)
 
 A common platform interface for the [`dr_multi_drm_sdk`][1] plugin.
 
@@ -22,9 +22,9 @@ If you encounter any issues, bugs, or have any feature requests, please file the
 
 This DrMultiDrmSdk plugin for Flutter is developed by [DoveRunner](https://www.doverunner.com).
 
-[1]: ../dr_multi_drm_sdk
+[1]: https://pub.dev/packages/dr_multi_drm_sdk
 [2]: https://flutter.dev/docs/development/packages-and-plugins/developing-packages#federated-plugins
 [3]: https://flutter.dev/docs/development/packages-and-plugins/developing-packages
-[4]: ./lib/dr_multi_drm_sdk_interface.dart
+[4]: https://github.com/doverunner/multi-drm-flutter-sdk/tree/main/dr-multi-drm-sdk/dr_multi_drm_sdk_interface/lib/dr_multi_drm_sdk_interface.dart
 [5]: https://github.com/doverunner/multi-drm-flutter-sdk/issues
 [6]: https://www.doverunner.com

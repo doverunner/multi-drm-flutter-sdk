@@ -16,7 +16,7 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
 
   final GetDrmContentUseCase _getDrmContentUseCaseUseCase;
 
-  static const inkaLicenseUrl =
+  static const drLicenseUrl =
       "https://drm-license.doverunner.com/ri/licenseManager.do";
   static const siteId = "DEMO";
   static const certUrl =
@@ -86,11 +86,13 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
           break;
       }
       if (state != null) {
-        state![state!.indexWhere((p0) => p0.url == event.url)] =
-            state![state!.indexWhere((p0) => p0.url == event.url)].copyWith(
-          downloadStatus: downloadState,
-        );
-        update(null, true);
+        var index = state!.indexWhere((p0) => p0.url == event.url);
+        if (index >= 0) {
+          state![index] = state![index].copyWith(
+            downloadStatus: downloadState,
+          );
+          update(null, true);
+        }
       }
     }).onError((error) {
       if (state != null) {
@@ -143,7 +145,7 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
           state![i].contentId,
           state![i].url,
           token: state![i].token,
-          licenseUrl: state![i].licenseServerUrl ?? inkaLicenseUrl,
+          licenseUrl: state![i].licenseServerUrl ?? drLicenseUrl,
           licenseCipherTablePath: state![i].licenseCipherPath,
           certificateUrl: state![i].licenseCertUrl ?? certUrl,
         );

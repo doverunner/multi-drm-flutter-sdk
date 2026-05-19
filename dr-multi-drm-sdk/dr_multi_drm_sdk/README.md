@@ -1,13 +1,13 @@
 ## **DoveRunner MULTI DRM SDK** for Flutter Development Guide
 
-[![pub package](https://img.shields.io/badge/puv-1.1.5-orange)](https://pub.dartlang.org/packages/)
+[![pub package](https://img.shields.io/badge/pub-1.2.0-orange)](https://pub.dev/packages/dr_multi_drm_sdk)
 
 A Flutter dr_multi_drm_sdk plugin which provides easy to apply Multi-DRM(Android: Widevine, iOS: FairPlay) when developing media service apps for Android and iOS. Please refer to the links below for detailed information.
 
 ## **support environment**
 
 - Android 5.0 (Lolipop) & Android targetSdkVersion 34 or higher
-- iOS 12.0 higher
+- iOS 12.5 higher
 - This SDK supports media3 version 1.5.1 on Android.
 
 ## **Important**
@@ -16,7 +16,7 @@ A Flutter dr_multi_drm_sdk plugin which provides easy to apply Multi-DRM(Android
 
 ## **SDK usage**
 
-To add DrMultiDrmSdk to your Flutter app, read the [Installation](https://pub.dev/packages/) instructions. Below are the Android and iOS properties required for DrMultiDrmSdk to work properly.
+To add DrMultiDrmSdk to your Flutter app, read the [Installation](https://pub.dev/packages/dr_multi_drm_sdk) instructions. Below are the Android and iOS properties required for DrMultiDrmSdk to work properly.
 
 <details>
 <summary>Android</summary>
