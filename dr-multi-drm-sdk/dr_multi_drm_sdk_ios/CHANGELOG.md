@@ -1,3 +1,7 @@
+# Version 1.2.2
+
+> - Update dr_multi_drm_sdk_interface
+
 # Version 1.2.0
 
 > - Rebranded from PallyCon to DoveRunner

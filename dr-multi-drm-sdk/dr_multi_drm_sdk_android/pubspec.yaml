@@ -12,7 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  dr_multi_drm_sdk_interface: ^1.2.2
+  # dr_multi_drm_sdk_interface: ^1.2.2
+  dr_multi_drm_sdk_interface:
+    path: ../dr_multi_drm_sdk_interface
   rename_app: ^1.6.2
 
 dev_dependencies:
