@@ -95,6 +95,11 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  # Force CocoaPods integration for iOS plugins regardless of the user's
+  # Flutter config, so `pod install` always includes all plugin pods.
+  config:
+    enable-swift-package-manager: false
+
   assets:
     - assets/
   # The following line ensures that the Material Icons font is
