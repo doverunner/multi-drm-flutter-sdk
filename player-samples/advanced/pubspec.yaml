@@ -35,9 +35,7 @@ dependencies:
   cupertino_icons: ^1.0.6
 
   #doverunner Drm SDK
-  # dr_multi_drm_sdk: ^1.2.2
-  dr_multi_drm_sdk:
-    path: ../../dr-multi-drm-sdk/dr_multi_drm_sdk
+  dr_multi_drm_sdk: ^1.2.2
 
   #BetterPlayer for DoveRunner DRM
   # better_player:
