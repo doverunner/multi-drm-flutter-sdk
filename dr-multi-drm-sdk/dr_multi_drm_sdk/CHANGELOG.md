@@ -1,3 +1,7 @@
+# Version 1.2.3
+
+>- Updated dr_multi_drm_sdk_ios to 1.2.3: content/license HTTP headers and cookies from DrContentConfiguration are now applied on iOS.
+
 # Version 1.2.2
 
 >- Upgraded the bundled Widevine library from 4.4.0 to 4.5.2.
