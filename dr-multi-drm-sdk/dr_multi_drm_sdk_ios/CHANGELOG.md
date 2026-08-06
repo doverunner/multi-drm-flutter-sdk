@@ -1,3 +1,8 @@
+# Version 1.2.4
+
+> - Pass contentHttpHeaders/contentCookie to DoveRunnerFairPlay's HLS playlist requests during download, so offline (persistable) licenses are stored correctly for contents served from CDNs that require HTTP headers
+> - Requires DoveRunnerFairPlay 2.7.0 or later
+
 # Version 1.2.3
 
 > - Fixed licenseHttpHeaders, licenseCookie not being applied to FairPlay license requests on iOS

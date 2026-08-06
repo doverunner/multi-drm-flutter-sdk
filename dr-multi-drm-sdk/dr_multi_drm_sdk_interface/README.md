@@ -1,6 +1,6 @@
 # dr_multi_drm_sdk_interface
 
-[![pub package](https://img.shields.io/badge/pub-1.2.3-orange)](https://pub.dev/packages/dr_multi_drm_sdk_interface)
+[![pub package](https://img.shields.io/badge/pub-1.2.4-orange)](https://pub.dev/packages/dr_multi_drm_sdk_interface)
 
 A common platform interface for the [`dr_multi_drm_sdk`][1] plugin.
 
