@@ -180,9 +180,9 @@ class DrMultiSdk: NSObject {
             return
         }
 
-        let urlAsset = makeURLAsset(url: contentUrl,
-                                    contentCookie: contentCookie,
-                                    contentHttpHeaders: contentHttpHeaders)
+        let contentHeaders = makeContentHeaders(contentCookie: contentCookie,
+                                                contentHttpHeaders: contentHttpHeaders)
+        let urlAsset = makeURLAsset(url: contentUrl, headers: contentHeaders)
         let certificateUrl = (appleCertUrl?.isEmpty == false)
             ? appleCertUrl!
             : "https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=\(siteId)"
@@ -195,6 +195,9 @@ class DrMultiSdk: NSObject {
                                                 licenseUrl: drmLicenseUrl,
                                                 licenseHttpHeader: licenseHttpHeaders,
                                                 licenseCookies: licenseCookie)
+        if !contentHeaders.isEmpty {
+            drm_content.contentHttpHeader = contentHeaders
+        }
         guard let downloadTask = fpsSdk?.createDownloadTask(drm: drm_content, delegate: self) else {
             self.sendMultiDrmEvent(url: url, eventType: DrEventType.downloadError, message: "DownloadTask not Create! ", errorCode: "")
             return
@@ -213,13 +216,16 @@ class DrMultiSdk: NSObject {
         downloadTask.resume()
     }
 
-    private func makeURLAsset(url: URL,
-                              contentCookie: String?,
-                              contentHttpHeaders: Dictionary<String, String>?) -> AVURLAsset {
+    private func makeContentHeaders(contentCookie: String?,
+                                    contentHttpHeaders: Dictionary<String, String>?) -> Dictionary<String, String> {
         var headers = contentHttpHeaders ?? [:]
         if let contentCookie, !contentCookie.isEmpty {
             headers["Cookie"] = contentCookie
         }
+        return headers
+    }
+
+    private func makeURLAsset(url: URL, headers: Dictionary<String, String>) -> AVURLAsset {
         if headers.isEmpty {
             return AVURLAsset(url: url)
         }
