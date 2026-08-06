@@ -156,7 +156,7 @@ class WvSdk(private val context: Context) {
         DrWvSDK.removeWvEventListener(listener)
         DrWvSDK.addWvEventListener(listener)
 //        wvSDKList.entries.firstOrNull()?.let { (_, sdk) ->
-//            sdk.setPallyConEventListener(listener)
+//            sdk.setDrEventListener(listener)
 //        }
     }
 
@@ -209,7 +209,7 @@ class WvSdk(private val context: Context) {
                 wvSDKList[config.contentId]!!.updateSecure({
                     print("update secure time")
                     val index =
-                        contentDataList.indices.find { contentDataList[it].url == config.contentUrl }
+                        contentDataList.indices.find { contentDataList[it].contentId == config.contentId }
                     if (index != null) {
                         val gson = Gson().toJson(contentDataList[index])
                         continuation.resume(gson, null)

@@ -10,6 +10,7 @@ public class MethodCallHandler: NSObject {
         }
 
         DrMultiSdk.shared.initialize(siteId: siteId)
+        result(nil)
     }
 
     public func onRelease() {

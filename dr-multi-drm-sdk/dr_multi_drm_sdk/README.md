@@ -1,6 +1,6 @@
 ## **DoveRunner MULTI DRM SDK** for Flutter Development Guide
 
-[![pub package](https://img.shields.io/badge/pub-1.2.0-orange)](https://pub.dev/packages/dr_multi_drm_sdk)
+[![pub package](https://img.shields.io/badge/pub-1.2.2-orange)](https://pub.dev/packages/dr_multi_drm_sdk)
 
 A Flutter dr_multi_drm_sdk plugin which provides easy to apply Multi-DRM(Android: Widevine, iOS: FairPlay) when developing media service apps for Android and iOS. Please refer to the links below for detailed information.
 
@@ -35,13 +35,14 @@ android {
 
 **Permissions**
 
-Inside the SDK, the following 4 items are used in relation to user permission.
+Inside the SDK, the following 5 items are used in relation to user permission.
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 ```
 
 You can add the Maven repository configuration to the repositories block in your android/build.gradle file as follows:

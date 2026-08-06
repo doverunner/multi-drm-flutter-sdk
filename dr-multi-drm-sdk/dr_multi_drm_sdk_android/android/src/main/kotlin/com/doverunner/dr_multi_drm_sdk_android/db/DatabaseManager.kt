@@ -29,7 +29,7 @@ class DatabaseManager {
     }
 
     companion object {
-        private const val APP_FILE_NAME = "pallycon_downloaded_configs"
+        private const val APP_FILE_NAME = "doverunner_downloaded_configs"
 
         private var instance: DatabaseManager? = null
         private lateinit var context: Context

@@ -1,4 +1,4 @@
-name: pallycon_drm_sdk_example
+name: dr_multi_drm_sdk_example
 description: Demonstrates how to use the dr_multi_drm_sdk plugin.
 
 # The following line prevents the package from being accidentally published to

@@ -31,7 +31,16 @@ class MovieCellState extends State<MovieCell> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (isPlayerVisible)
-              createBetterPlayer() ?? nonePlayer()
+              // createBetterPlayer() ?? nonePlayer()
+              FutureBuilder<Widget?>(
+                future: createBetterPlayer(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return snapshot.data ?? nonePlayer();
+                  }
+                  return nonePlayer();
+                },
+              )
             else
               nonePlayer(),
             const SizedBox(height: 16),
@@ -104,10 +113,12 @@ class MovieCellState extends State<MovieCell> {
     );
   }
 
-  Widget? createBetterPlayer() {
+  Future<Widget?> createBetterPlayer() async {
     if (betterPlayer != null) {
       return betterPlayer;
     }
+
+    var json = await _getJsonContent();
 
     const betterPlayerConfiguration = BetterPlayerConfiguration(
       aspectRatio: 16 / 9,
@@ -131,7 +142,8 @@ class MovieCellState extends State<MovieCell> {
         licenseUrl: config.licenseUrl,
         headers: {
           "pallycon-customdata-v2": config.token ?? "",
-          "siteId": DrmMovieController.siteId
+          "siteId": DrmMovieController.siteId,
+          "json" : json,
         });
 
     BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(
