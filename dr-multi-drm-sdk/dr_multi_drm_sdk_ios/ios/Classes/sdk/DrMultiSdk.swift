@@ -9,8 +9,10 @@ struct DrmContent {
     var contentId: String
     var token: String
     var customData: String?
-    var httpHeader: Dictionary<String, String>?
-    var cookie: String?
+    var contentHttpHeader: Dictionary<String, String>?
+    var licenseHttpHeader: Dictionary<String, String>?
+    var contentCookie: String?
+    var licenseCookie: String?
     var appleCertUrl: String?
     var drmLicenseUrl: String?
     var downloadState: DownloadState = DownloadState.not
@@ -18,18 +20,21 @@ struct DrmContent {
 
     init(siteId: String, url: String, contentId: String, path: String) {
         self.init(siteId: siteId, drmType: "", url: url, contentId: contentId,
-                  token: "", customData: "", httpHeader: nil, cookie: "", drmLicenseUrl: "",
-                  appleCertUrl: "",  downloadState: DownloadState.completed, path: path)
+                  token: "", customData: "", contentHttpHeader: nil, licenseHttpHeader: nil,
+                  contentCookie: nil, licenseCookie: nil, drmLicenseUrl: "",
+                  appleCertUrl: "", downloadState: DownloadState.completed, path: path)
     }
 
     init(sitdeId: String, url: String, contentId: String, token: String) {
         self.init(siteId: sitdeId, drmType: "", url: url, contentId: contentId, token: token,
-                  customData: "", httpHeader: nil, cookie: "", drmLicenseUrl: "",
+                  customData: "", contentHttpHeader: nil, licenseHttpHeader: nil,
+                  contentCookie: nil, licenseCookie: nil, drmLicenseUrl: "",
                   appleCertUrl: "", downloadState: DownloadState.not, path: "")
     }
 
     init(siteId: String, drmType: String, url: String, contentId: String, token: String, customData: String?,
-         httpHeader: Dictionary<String, String>?, cookie: String?, drmLicenseUrl: String?,
+         contentHttpHeader: Dictionary<String, String>?, licenseHttpHeader: Dictionary<String, String>?,
+         contentCookie: String?, licenseCookie: String?, drmLicenseUrl: String?,
          appleCertUrl: String?, downloadState: DownloadState, path: String) {
         self.siteId = siteId
         self.drmType = drmType
@@ -37,8 +42,10 @@ struct DrmContent {
         self.contentId = contentId
         self.token = token
         self.customData = customData
-        self.httpHeader = httpHeader
-        self.cookie = cookie
+        self.contentHttpHeader = contentHttpHeader
+        self.licenseHttpHeader = licenseHttpHeader
+        self.contentCookie = contentCookie
+        self.licenseCookie = licenseCookie
         self.drmLicenseUrl = drmLicenseUrl
         self.appleCertUrl = appleCertUrl
         self.downloadState = downloadState
@@ -46,12 +53,18 @@ struct DrmContent {
     }
 
     func toDrmConfig() -> String {
-
-        let customData = self.customData ?? ""
-        let drmLicenseUrl = self.drmLicenseUrl ?? ""
-
-        let configString = "{\"drmConfig\":{\"siteId\":\"\(self.siteId)\",\"contentId\":\"\(self.contentId)\",\"drmLicenseUrl\":\"\(drmLicenseUrl)\",\"token\":\"\(self.token)\",\"customData\":\"\(customData)\"},\"url\":\"\(self.downloadPath)\"}"
-        return configString
+        return DrMultiSdk.buildContentConfigJson(
+            siteId: siteId,
+            contentId: contentId,
+            url: downloadPath,
+            token: token,
+            customData: customData,
+            drmLicenseUrl: drmLicenseUrl,
+            contentCookie: contentCookie,
+            licenseCookie: licenseCookie,
+            contentHttpHeaders: contentHttpHeader,
+            licenseHttpHeaders: licenseHttpHeader
+        )
     }
 }
 
@@ -104,25 +117,37 @@ class DrMultiSdk: NSObject {
     }
 
     public func getObjectForContent(url: String, contentId: String, token: String?,
-                                    customData: String?, httpHeaders: Dictionary<String, String>?,
-                                    cookie: String?, drmLicenseUrl: String?, appleCertUrl: String?) -> String {
+                                    customData: String?,
+                                    contentHttpHeaders: Dictionary<String, String>?,
+                                    licenseHttpHeaders: Dictionary<String, String>?,
+                                    contentCookie: String?, licenseCookie: String?,
+                                    drmLicenseUrl: String?, appleCertUrl: String?) -> String {
         if var drmContent = downloadedContentMap[url] {
             drmContent.contentId = contentId
             drmContent.drmLicenseUrl = drmLicenseUrl
             drmContent.token = token ?? ""
-            drmContent.httpHeader = httpHeaders
-            drmContent.cookie = cookie
+            drmContent.contentHttpHeader = contentHttpHeaders
+            drmContent.licenseHttpHeader = licenseHttpHeaders
+            drmContent.contentCookie = contentCookie
+            drmContent.licenseCookie = licenseCookie
             drmContent.customData = customData
             drmContent.appleCertUrl = appleCertUrl ?? ""
             downloadedContentMap[url] = drmContent
             return drmContent.toDrmConfig()
         } else {
             // Streaming
-            let strToken = token ?? ""
-            let strCustomData = customData ?? ""
-            let strDrmLicenseUrl = drmLicenseUrl ?? ""
-            let configString = "{\"drmConfig\":{\"siteId\":\"\(self.siteId)\",\"contentId\":\"\(contentId)\",\"drmLicenseUrl\":\"\(strDrmLicenseUrl)\",\"token\":\"\(strToken)\",\"customData\":\"\(strCustomData)\"},\"url\":\"\(url)\"}"
-            return configString
+            return DrMultiSdk.buildContentConfigJson(
+                siteId: self.siteId,
+                contentId: contentId,
+                url: url,
+                token: token,
+                customData: customData,
+                drmLicenseUrl: drmLicenseUrl,
+                contentCookie: contentCookie,
+                licenseCookie: licenseCookie,
+                contentHttpHeaders: contentHttpHeaders,
+                licenseHttpHeaders: licenseHttpHeaders
+            )
         }
     }
 
@@ -135,7 +160,11 @@ class DrMultiSdk: NSObject {
         return DownloadState.not.name
     }
 
-    public func addStartDownload(url: String, contentId: String, token: String?, customData: String?, httpHeaders: Dictionary<String, String>?, cookie: String?, drmLicenseUrl: String?, appleCertUrl: String?) {
+    public func addStartDownload(url: String, contentId: String, token: String?, customData: String?,
+                                 contentHttpHeaders: Dictionary<String, String>?,
+                                 licenseHttpHeaders: Dictionary<String, String>?,
+                                 contentCookie: String?, licenseCookie: String?,
+                                 drmLicenseUrl: String?, appleCertUrl: String?) {
 //        sendMultiDrmEvent(url: url, eventType: DrEventType.complete, message: "Complete")
         for (task, downloadContent) in downloadTaskMap {
             print("download task \(downloadContent.contentId)")
@@ -151,24 +180,92 @@ class DrMultiSdk: NSObject {
             return
         }
 
-        let urlAsset = AVURLAsset(url: contentUrl)
-        print("https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=\(siteId)")
-        let drm_content = FairPlayConfiguration(avURLAsset: urlAsset, 
+        let urlAsset = makeURLAsset(url: contentUrl,
+                                    contentCookie: contentCookie,
+                                    contentHttpHeaders: contentHttpHeaders)
+        let certificateUrl = (appleCertUrl?.isEmpty == false)
+            ? appleCertUrl!
+            : "https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=\(siteId)"
+        print(certificateUrl)
+        let drm_content = FairPlayConfiguration(avURLAsset: urlAsset,
                                                 contentId: contentId,
-                                                certificateUrl: "https://drm-license.doverunner.com/ri/fpsKeyManager.do?siteId=\(siteId)",
+                                                certificateUrl: certificateUrl,
                                                 authData: token,
-                                                delegate: self)
+                                                delegate: self,
+                                                licenseUrl: drmLicenseUrl,
+                                                licenseHttpHeader: licenseHttpHeaders,
+                                                licenseCookies: licenseCookie)
         guard let downloadTask = fpsSdk?.createDownloadTask(drm: drm_content, delegate: self) else {
             self.sendMultiDrmEvent(url: url, eventType: DrEventType.downloadError, message: "DownloadTask not Create! ", errorCode: "")
             return
         }
 
         let contentInfo = DrmContent(siteId: self.siteId, drmType: "", url: url, contentId: contentId,
-                                     token: token!, customData: customData, httpHeader: httpHeaders,
-                                     cookie: cookie, drmLicenseUrl: drmLicenseUrl,
-                                     appleCertUrl: "", downloadState: DownloadState.not, path: "")
+                                     token: token!, customData: customData,
+                                     contentHttpHeader: contentHttpHeaders,
+                                     licenseHttpHeader: licenseHttpHeaders,
+                                     contentCookie: contentCookie,
+                                     licenseCookie: licenseCookie,
+                                     drmLicenseUrl: drmLicenseUrl,
+                                     appleCertUrl: appleCertUrl ?? "",
+                                     downloadState: DownloadState.not, path: "")
         downloadTaskMap[downloadTask] = contentInfo
         downloadTask.resume()
+    }
+
+    private func makeURLAsset(url: URL,
+                              contentCookie: String?,
+                              contentHttpHeaders: Dictionary<String, String>?) -> AVURLAsset {
+        var headers = contentHttpHeaders ?? [:]
+        if let contentCookie, !contentCookie.isEmpty {
+            headers["Cookie"] = contentCookie
+        }
+        if headers.isEmpty {
+            return AVURLAsset(url: url)
+        }
+        return AVURLAsset(url: url, options: ["AVURLAssetHTTPHeaderFieldsKey": headers])
+    }
+
+    static func buildContentConfigJson(siteId: String,
+                                       contentId: String,
+                                       url: String,
+                                       token: String?,
+                                       customData: String?,
+                                       drmLicenseUrl: String?,
+                                       contentCookie: String?,
+                                       licenseCookie: String?,
+                                       contentHttpHeaders: Dictionary<String, String>?,
+                                       licenseHttpHeaders: Dictionary<String, String>?) -> String {
+        var drmConfig: [String: Any] = [
+            "siteId": siteId,
+            "contentId": contentId,
+            "drmLicenseUrl": drmLicenseUrl ?? "",
+            "token": token ?? "",
+            "customData": customData ?? ""
+        ]
+        if let licenseCookie, !licenseCookie.isEmpty {
+            drmConfig["licenseCookie"] = licenseCookie
+        }
+        if let licenseHttpHeaders, !licenseHttpHeaders.isEmpty {
+            drmConfig["licenseHttpHeaders"] = licenseHttpHeaders
+        }
+
+        var root: [String: Any] = [
+            "drmConfig": drmConfig,
+            "url": url
+        ]
+        if let contentCookie, !contentCookie.isEmpty {
+            root["contentCookie"] = contentCookie
+        }
+        if let contentHttpHeaders, !contentHttpHeaders.isEmpty {
+            root["contentHttpHeaders"] = contentHttpHeaders
+        }
+
+        guard let data = try? JSONSerialization.data(withJSONObject: root, options: []),
+              let json = String(data: data, encoding: .utf8) else {
+            return "{\"drmConfig\":{\"siteId\":\"\(siteId)\",\"contentId\":\"\(contentId)\",\"drmLicenseUrl\":\"\(drmLicenseUrl ?? "")\",\"token\":\"\(token ?? "")\",\"customData\":\"\(customData ?? "")\"},\"url\":\"\(url)\"}"
+        }
+        return json
     }
 
     public func resumeAll() {
