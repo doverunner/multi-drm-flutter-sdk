@@ -132,7 +132,7 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
     final Set<String> uniqueContentIds = {};
 
     final filteredMovies = movieList.where((movie) {
-      return p.extension(movie.url) == checkExtension &&
+      return p.extension(Uri.parse(movie.url).path) == checkExtension &&
           uniqueContentIds.add(movie.contentId);
     }).toList();
 
@@ -148,6 +148,10 @@ class DrmMovieController extends SuperController<List<DrmMovie>> {
           licenseUrl: state![i].licenseServerUrl ?? drLicenseUrl,
           licenseCipherTablePath: state![i].licenseCipherPath,
           certificateUrl: state![i].licenseCertUrl ?? certUrl,
+          contentHttpHeaders: state![i].contentHttpHeaders,
+          contentCookie: state![i].contentCookie,
+          licenseHttpHeaders: state![i].licenseHttpHeaders,
+          licenseCookie: state![i].licenseCookie,
         );
         drContentConfigs.add(config);
         downloadStateCheck(i);

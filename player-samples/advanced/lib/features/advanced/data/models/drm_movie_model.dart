@@ -36,6 +36,10 @@ class DrmMovieModel extends DrmMovie {
   final String? licenseCipherPath;
   final String? licenseCertUrl;
   final String? token;
+  final Map<String, String>? contentHttpHeaders;
+  final String? contentCookie;
+  final Map<String, String>? licenseHttpHeaders;
+  final String? licenseCookie;
   final DownloadStatus? downloadStatus;
 
   const DrmMovieModel({
@@ -56,6 +60,10 @@ class DrmMovieModel extends DrmMovie {
     this.licenseCipherPath,
     this.licenseCertUrl,
     this.token,
+    this.contentHttpHeaders,
+    this.contentCookie,
+    this.licenseHttpHeaders,
+    this.licenseCookie,
     this.downloadStatus,
   }) : super(
           url: url,
@@ -75,6 +83,10 @@ class DrmMovieModel extends DrmMovie {
           licenseCipherPath: licenseCipherPath,
           licenseCertUrl: licenseCertUrl,
           token: token,
+          contentHttpHeaders: contentHttpHeaders,
+          contentCookie: contentCookie,
+          licenseHttpHeaders: licenseHttpHeaders,
+          licenseCookie: licenseCookie,
           downloadStatus: downloadStatus,
         );
 
@@ -102,6 +114,10 @@ class DrmMovieModel extends DrmMovie {
     String? licenseCipherPath,
     String? licenseCertUrl,
     String? token,
+    Map<String, String>? contentHttpHeaders,
+    String? contentCookie,
+    Map<String, String>? licenseHttpHeaders,
+    String? licenseCookie,
     DownloadStatus? downloadStatus,
   }) {
     return DrmMovieModel(
@@ -122,6 +138,10 @@ class DrmMovieModel extends DrmMovie {
       licenseCipherPath: licenseCipherPath ?? this.licenseCipherPath,
       licenseCertUrl: licenseCertUrl ?? this.licenseCertUrl,
       token: token ?? this.token,
+      contentHttpHeaders: contentHttpHeaders ?? this.contentHttpHeaders,
+      contentCookie: contentCookie ?? this.contentCookie,
+      licenseHttpHeaders: licenseHttpHeaders ?? this.licenseHttpHeaders,
+      licenseCookie: licenseCookie ?? this.licenseCookie,
       downloadStatus: downloadStatus ?? this.downloadStatus,
     );
   }
