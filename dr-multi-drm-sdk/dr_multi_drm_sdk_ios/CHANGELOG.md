@@ -1,3 +1,7 @@
+# Version 1.2.5
+
+> - Version alignment for the v1.2.5 release
+
 # Version 1.2.4
 
 > - Pass contentHttpHeaders/contentCookie to DoveRunnerFairPlay's HLS playlist requests during download, so offline (persistable) licenses are stored correctly for contents served from CDNs that require HTTP headers

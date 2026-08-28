@@ -1,3 +1,7 @@
+# Version 1.2.5
+
+> - Version alignment for the v1.2.5 release
+
 # Version 1.2.4
 
 > - Version alignment for the v1.2.4 release

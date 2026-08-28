@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'dr_multi_drm_sdk_ios'
-  s.version          = '1.2.4'
+  s.version          = '1.2.5'
   s.summary          = 'DoveRunner DRM Flutter SDK for iOS.'
   s.description      = <<-DESC
 A new Flutter DoveRunner FairPlay Streaming(FPS) SDK plugin project.

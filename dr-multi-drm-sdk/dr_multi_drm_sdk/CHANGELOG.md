@@ -1,3 +1,7 @@
+# Version 1.2.5
+
+>- Updated dr_multi_drm_sdk_android to 1.2.5: upgraded the bundled Widevine SDK from 4.5.2 to 4.6.3.
+
 # Version 1.2.4
 
 >- Updated dr_multi_drm_sdk_ios to 1.2.4: offline license is now stored correctly when downloading contents that require HTTP headers (DoveRunnerFairPlay 2.7.0+).
