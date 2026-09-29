@@ -1,3 +1,15 @@
+# Version 1.2.5
+
+>- Upgraded the bundled Widevine library from 4.5.2 to 4.6.3.
+
+# Version 1.2.4
+
+>- Version alignment for the v1.2.4 release
+
+# Version 1.2.3
+
+>- Version alignment for the v1.2.3 release
+
 # Version 1.2.2
 
 >- Upgraded the bundled Widevine library from 4.4.0 to 4.5.2.

@@ -19,6 +19,10 @@ class DrmMovie extends Equatable {
   final String? licenseCipherPath;
   final String? licenseCertUrl;
   final String? token;
+  final Map<String, String>? contentHttpHeaders;
+  final String? contentCookie;
+  final Map<String, String>? licenseHttpHeaders;
+  final String? licenseCookie;
   final DownloadStatus? downloadStatus;
 
   const DrmMovie(
@@ -39,6 +43,10 @@ class DrmMovie extends Equatable {
       this.licenseServerUrl,
       this.licenseCipherPath,
       this.licenseCertUrl,
+      this.contentHttpHeaders,
+      this.contentCookie,
+      this.licenseHttpHeaders,
+      this.licenseCookie,
       this.downloadStatus});
 
   @override
@@ -61,6 +69,10 @@ class DrmMovie extends Equatable {
         licenseCipherPath ?? "",
         licenseCertUrl ?? "",
         token ?? "",
+        contentHttpHeaders ?? const <String, String>{},
+        contentCookie ?? "",
+        licenseHttpHeaders ?? const <String, String>{},
+        licenseCookie ?? "",
         downloadStatus ?? DownloadStatus.pending
       ];
 
@@ -82,6 +94,10 @@ class DrmMovie extends Equatable {
     String? licenseCipherPath,
     String? licenseCertUrl,
     String? token,
+    Map<String, String>? contentHttpHeaders,
+    String? contentCookie,
+    Map<String, String>? licenseHttpHeaders,
+    String? licenseCookie,
     DownloadStatus? downloadStatus,
   }) {
     return DrmMovie(
@@ -102,6 +118,10 @@ class DrmMovie extends Equatable {
       licenseCipherPath: licenseCipherPath ?? this.licenseCipherPath,
       licenseCertUrl: licenseCertUrl ?? this.licenseCertUrl,
       token: token ?? this.token,
+      contentHttpHeaders: contentHttpHeaders ?? this.contentHttpHeaders,
+      contentCookie: contentCookie ?? this.contentCookie,
+      licenseHttpHeaders: licenseHttpHeaders ?? this.licenseHttpHeaders,
+      licenseCookie: licenseCookie ?? this.licenseCookie,
       downloadStatus: downloadStatus ?? this.downloadStatus,
     );
   }

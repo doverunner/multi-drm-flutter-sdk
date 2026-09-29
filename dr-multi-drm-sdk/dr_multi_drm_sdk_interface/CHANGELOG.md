@@ -1,3 +1,15 @@
+# Version 1.2.5
+
+> - Version alignment for the v1.2.5 release
+
+# Version 1.2.4
+
+> - Version alignment for the v1.2.4 release
+
+# Version 1.2.3
+
+> - Version alignment for the v1.2.3 release
+
 # Version 1.2.2
 
 > - Rebranded from PallyConEvent to DrEvent

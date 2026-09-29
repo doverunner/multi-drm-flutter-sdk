@@ -28,8 +28,10 @@ public class MethodCallHandler: NSObject {
 
         let token = arguments["token"] as? String
         let customData = arguments["customData"] as? String
-        let cookie = arguments["cookie"] as? String
-        let httpHeaders = arguments["licenseHttpHeaders"] as? Dictionary<String, String>
+        let contentCookie = arguments["contentCookie"] as? String
+        let licenseCookie = arguments["licenseCookie"] as? String
+        let contentHttpHeaders = arguments["contentHttpHeaders"] as? Dictionary<String, String>
+        let licenseHttpHeaders = arguments["licenseHttpHeaders"] as? Dictionary<String, String>
         let licenseUrl = arguments["licenseUrl"] as? String
         let appleCertUrl = arguments["certificateUrl"] as? String
         //let drmType = arguments["drmType"] as? String
@@ -39,8 +41,10 @@ public class MethodCallHandler: NSObject {
             contentId: contentId,
             token: token,
             customData: customData,
-            httpHeaders: httpHeaders,
-            cookie: cookie,
+            contentHttpHeaders: contentHttpHeaders,
+            licenseHttpHeaders: licenseHttpHeaders,
+            contentCookie: contentCookie,
+            licenseCookie: licenseCookie,
             drmLicenseUrl: licenseUrl,
             appleCertUrl: appleCertUrl
         )
@@ -71,8 +75,10 @@ public class MethodCallHandler: NSObject {
 
         let token = arguments["token"] as? String
         let customData = arguments["customData"] as? String
-        let cookie = arguments["cookie"] as? String
-        let httpHeaders = arguments["licenseHttpHeaders"] as? Dictionary<String, String>
+        let contentCookie = arguments["contentCookie"] as? String
+        let licenseCookie = arguments["licenseCookie"] as? String
+        let contentHttpHeaders = arguments["contentHttpHeaders"] as? Dictionary<String, String>
+        let licenseHttpHeaders = arguments["licenseHttpHeaders"] as? Dictionary<String, String>
         let licenseUrl = arguments["licenseUrl"] as? String
         let appleCertUrl = arguments["certificateUrl"] as? String
         //let drmType = arguments["drmType"] as? String
@@ -82,8 +88,10 @@ public class MethodCallHandler: NSObject {
             contentId: contentId,
             token: token,
             customData: customData,
-            httpHeaders: httpHeaders,
-            cookie: cookie,
+            contentHttpHeaders: contentHttpHeaders,
+            licenseHttpHeaders: licenseHttpHeaders,
+            contentCookie: contentCookie,
+            licenseCookie: licenseCookie,
             drmLicenseUrl: licenseUrl,
             appleCertUrl: appleCertUrl
         )
@@ -100,24 +108,6 @@ public class MethodCallHandler: NSObject {
             return
         }
         
-        let token = arguments["token"] as? String
-        let customData = arguments["customData"] as? String
-        let cookie = arguments["cookie"] as? String
-        let httpHeaders = arguments["licenseHttpHeaders"] as? Dictionary<String, String>
-        let licenseUrl = arguments["licenseUrl"] as? String
-        let appleCertUrl = arguments["certificateUrl"] as? String
-        //let drmType = arguments["drmType"] as? String
-        
-        //            DrMultiSdk.shared.stopDownload(
-        //                url: url,
-        //                contentId: contentId,
-        //                token: token,
-        //                customData: customData,
-        //                httpHeaders: httpHeaders,
-        //                cookie: cookie,
-        //                drmLicenseUrl: licenseUrl,
-        //                appleCertUrl: appleCertUrl
-        //            )
         DrMultiSdk.shared.cancelDownloadTask(contentId)
     }
 

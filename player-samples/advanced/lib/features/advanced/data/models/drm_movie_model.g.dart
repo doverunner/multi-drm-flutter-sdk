@@ -25,6 +25,16 @@ DrmMovieModel _$DrmMovieModelFromJson(Map<String, dynamic> json) =>
       licenseCipherPath: json['licenseCipherPath'] as String?,
       licenseCertUrl: json['licenseCertUrl'] as String?,
       token: json['token'] as String?,
+      contentHttpHeaders:
+          (json['contentHttpHeaders'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
+      contentCookie: json['contentCookie'] as String?,
+      licenseHttpHeaders:
+          (json['licenseHttpHeaders'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
+      licenseCookie: json['licenseCookie'] as String?,
       downloadStatus:
           $enumDecodeNullable(_$DownloadStatusEnumMap, json['downloadStatus']),
     );
@@ -48,6 +58,10 @@ Map<String, dynamic> _$DrmMovieModelToJson(DrmMovieModel instance) =>
       'licenseCipherPath': instance.licenseCipherPath,
       'licenseCertUrl': instance.licenseCertUrl,
       'token': instance.token,
+      'contentHttpHeaders': instance.contentHttpHeaders,
+      'contentCookie': instance.contentCookie,
+      'licenseHttpHeaders': instance.licenseHttpHeaders,
+      'licenseCookie': instance.licenseCookie,
       'downloadStatus': _$DownloadStatusEnumMap[instance.downloadStatus],
     };
 

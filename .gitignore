@@ -395,3 +395,5 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/flutter,androidstudio,xcode,android,swift,kotlin,java,objective-c
+# Cladding plugin workspace
+.cladding/
